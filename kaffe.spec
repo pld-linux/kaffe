@@ -11,6 +11,7 @@ Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
 Source0:	http://www.kaffe.org/ftp/pub/kaffe/%{name}-%{version}.tar.gz
+# Source0-md5:	5a900dd33e7bde48d2fa94ada273e80e
 Patch0:		%{name}-alpha.patch
 Patch1:		%{name}-perlpath.patch
 Patch2:		%{name}-getBytes.patch
