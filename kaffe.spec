@@ -6,7 +6,7 @@ Summary(ru):	Свободно распространяемая виртуальная машина для запуска Java(tm) к
 Summary(uk):	В╕льно розповсюджувана в╕ртуальна машина для запуску Java(tm) коду
 Name:		kaffe
 Version:	1.0.6
-Release:	12
+Release:	13
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
@@ -36,12 +36,12 @@ BuildRequires:	libungif-devel
 %ifarch ppc
 BuildRequires:	libffi-devel
 %endif
-ExcludeArch:	ia64 s390 s390x
-Provides:	jre = 1.1
 Requires:	fastjar
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Provides:	jre = 1.1
 Obsoletes:	kaffe-bissawt
 Conflicts:	ibm-java-sdk
+ExclusiveArch:	alpha arm %{ix86} m68k mips ppc sparc sparc64 sparcv9
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libexecdir	%{_libdir}/kaffe
 
