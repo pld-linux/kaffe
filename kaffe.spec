@@ -1,15 +1,15 @@
-Summary: A free virtual machine for running Java(TM) code.
-Name: kaffe
-Version: 1.0.b4
-Release: 2
-Copyright: GPL
-Url: http://www.kaffe.org/
-Group: Development/Languages
-Source0: ftp://ftp.transvirtual.com/pub/kaffe/kaffe-%{version}.tar.gz
-Patch: kaffe-alpha.patch
-Patch2: kaffe-perlpath.patch
-Obsoletes: kaffe-bissawt
-Buildroot: /var/tmp/kaffe-root
+Summary:	A free virtual machine for running Java(TM) code.
+Name:		kaffe
+Version:	1.0.5
+Release:	1
+Copyright:	GPL
+Url:		http://www.kaffe.org/
+Group:		Development/Languages
+Source:		ftp://ftp.transvirtual.com/pub/kaffe/kaffe-%{version}.tar.gz
+Patch0:		kaffe-alpha.patch
+Patch1:		kaffe-perlpath.patch
+Obsoletes:	kaffe-bissawt
+Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 Kaffe is a free virtual machine designed to execute Java(TM) bytecode.
@@ -22,31 +22,33 @@ while also maintaining the advantages and flexibility of code independence.
 
 Install the kaffe package if you need a Java virtual machine.
 
+%package devel
+Summary:	Headers and libtool files for kaffe
+Group:		Development/Languages
+Requires:	%{name} = %{version}
+
+%description devel
+Headers and libtool files for kaffe
+
 %prep
-%setup -q -n kaffe-1.0b4
-%patch -p1 -b .alpha
-%patch2 -p1
+%setup -q
+%patch0 -p1
+%patch1 -p1
+
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr --libdir=/usr/lib/kaffe \
-	--libexecdir=/usr/lib/kaffe
-# hack hack hack
-make || {
-  cp -l kaffe/kaffevm/intrp/icode.h kaffe/kaffevm/jit
-  make
- }
+%configure
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make prefix=$RPM_BUILD_ROOT/usr libdir=$RPM_BUILD_ROOT/usr/lib/kaffe \
-	libexecdir=$RPM_BUILD_ROOT/usr/lib/kaffe \
-	nativedir=$RPM_BUILD_ROOT/usr/lib/kaffe \
-	classdir=$RPM_BUILD_ROOT/usr/share/kaffe install
-#make prefix=$RPM_BUILD_ROOT/usr libdir=$RPM_BUILD_ROOT/usr/lib/kaffe \
-#	libexecdir=$RPM_BUILD_ROOT/usr/lib/kaffe \
-#	nativedir=$RPM_BUILD_ROOT/usr/lib/kaffe \
-#	classdir=$RPM_BUILD_ROOT/usr/share/kaffe check
-strip $RPM_BUILD_ROOT/usr/bin/* || echo
-strip $RPM_BUILD_ROOT/usr/lib/kaffe/Kaffe
+make install DESTDIR=$RPM_BUILD_ROOT
+
+strip --strip-unneeded $RPM_BUILD_ROOT%{_bindir}/* || :
+strip --strip-unneeded $RPM_BUILD_ROOT{%{_libdir},%{_libdir}/kaffe}/*.so || :
+
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
+	FAQ/* ChangeLog* README WHATSNEW
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -55,10 +57,20 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc README FAQ license.terms developers
-/usr/lib/kaffe
-/usr/bin/*
-/usr/man/*/*
-/usr/share/kaffe
-/usr/include/kaffe
+%defattr(644,root,root,755)
+%doc FAQ {ChangeLog*,README,WHATSNEW}.gz
+%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libexecdir}/Kaffe
+%attr(755,root,root) %{_libdir}/*.so
+%dir %{_libdir}/kaffe
+%attr(755,root,root) %{_libdir}/kaffe/*.so
+%{_libdir}/kaffe/security
+%{_mandir}/man1/kaffe.1.gz
+%{_datadir}/kaffe
+
+%files devel
+%defattr(644,root,root,755)
+%doc developers/*
+%{_includedir}/kaffe
+%attr(755,root,root) %{_libdir}/*.la
+%attr(755,root,root) %{_libdir}/kaffe/*.la
