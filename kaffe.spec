@@ -27,6 +27,7 @@ Provides:	java
 Provides:	java1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	kaffe-bissawt
+Conflicts:	ibm-java-sdk
 
 %define		_libexecdir	%{_libdir}/kaffe
 
