@@ -1,13 +1,18 @@
 Summary:	A free virtual machine for running Java(TM) code
 Name:		kaffe
-Version:	1.0.5
+Version:	1.0.6
 Release:	3
+Epoch:		1
 License:	GPL
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Source0:	http://www.kaffe.org/ftp/pub/kaffe/%{name}-%{version}.tar.gz
-Patch0:		kaffe-alpha.patch
-Patch1:		kaffe-perlpath.patch
+Patch0:		%{name}-alpha.patch
+Patch1:		%{name}-perlpath.patch
+Patch2:		%{name}-getBytes.patch
+Patch3:		%{name}-sparc.patch
+Patch4:		%{name}-jlong.patch
 URL:		http://www.kaffe.org/
 Obsoletes:	kaffe-bissawt
 Provides:	java
@@ -26,6 +31,7 @@ of code independence.
 %package devel
 Summary:	Headers and libtool files for kaffe
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Requires:	%{name} = %{version}
 
@@ -36,10 +42,12 @@ Headers and libtool files for kaffe.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
-LDFLAGS="-s"; export LDFLAGS
-%configure --mandir=%{_mandir}
+%configure
 %{__make}
 
 %install
@@ -47,12 +55,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-strip --strip-unneeded $RPM_BUILD_ROOT{%{_libdir},%{_libdir}/kaffe}/*.so
+rm -rf developers/{glibc-2.1.1-signal.patch,rpm-kaffe.spec} FAQ/CVS
 
-rm -f developers/{glibc-2.1.1-signal.patch,rpm-kaffe.spec}
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	FAQ/* ChangeLog* README WHATSNEW \
+gzip -9nf FAQ/* ChangeLog* README WHATSNEW \
 	developers/README*
 
 %post   -p /sbin/ldconfig
@@ -63,19 +68,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc FAQ {ChangeLog*,README,WHATSNEW}.gz
+%doc FAQ/*.gz
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libexecdir}/Kaffe
 %attr(755,root,root) %{_libdir}/*.so
 %dir %{_libdir}/kaffe
 %attr(755,root,root) %{_libdir}/kaffe/*.so
 %{_libdir}/kaffe/security
-%{_mandir}/man1/kaffe.1.gz
+%{_mandir}/man1/kaffe.1*
 %{_datadir}/kaffe
 
 %files devel
 %defattr(644,root,root,755)
-%doc developers/*
+%doc *.gz developers/*
 %{_includedir}/kaffe
 %attr(755,root,root) %{_libdir}/*.la
 %attr(755,root,root) %{_libdir}/kaffe/*.la
