@@ -176,7 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz developers/*
+%doc developers/*
 %{_includedir}/kaffe
 %attr(755,root,root) %{_libdir}/*.la
 %attr(755,root,root) %{_libdir}/kaffe/*.la
