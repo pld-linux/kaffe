@@ -1,7 +1,7 @@
 Summary:	A free virtual machine for running Java(TM) code
 Name:		kaffe
 Version:	1.0.5
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
@@ -10,6 +10,7 @@ Patch0:		kaffe-alpha.patch
 Patch1:		kaffe-perlpath.patch
 URL:		http://www.kaffe.org/
 Obsoletes:	kaffe-bissawt
+Provides:	java
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,7 +39,7 @@ Headers and libtool files for kaffe.
 
 %build
 LDFLAGS="-s"; export LDFLAGS
-%configure
+%configure --mandir=%{_mandir}
 %{__make}
 
 %install
