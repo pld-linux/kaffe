@@ -24,6 +24,7 @@ BuildRequires:	libpng-devel
 BuildRequires:	libungif-devel
 ExcludeArch:	ia64 s390 s390x
 Provides:	java
+Provides:	java1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	kaffe-bissawt
 
