@@ -1,11 +1,11 @@
-Summary:	A free virtual machine for running Java(TM) code.
+Summary:	A free virtual machine for running Java(TM) code
 Name:		kaffe
 Version:	1.0.5
 Release:	2
 License:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
-Source:		http://www.kaffe.org/ftp/pub/kaffe/kaffe-%{version}.tar.gz
+Source0:	http://www.kaffe.org/ftp/pub/kaffe/%{name}-%{version}.tar.gz
 Patch0:		kaffe-alpha.patch
 Patch1:		kaffe-perlpath.patch
 URL:		http://www.kaffe.org/
@@ -13,13 +13,14 @@ Obsoletes:	kaffe-bissawt
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Kaffe is a free virtual machine designed to execute Java(TM) bytecode. Kaffe
-can be configured in two modes. In the first mode, it operates as a pure
-bytecode interpreter (not unlike Javasoft's machine). In the second mode, it
-performs "just-in-time" code conversion from the abstract code to the host
-machine's native code. The second mode will ultimately allow execution of
-Java code at the same speed as standard compiled code, while also
-maintaining the advantages and flexibility of code independence.
+Kaffe is a free virtual machine designed to execute Java(TM) bytecode.
+Kaffe can be configured in two modes. In the first mode, it operates
+as a pure bytecode interpreter (not unlike Javasoft's machine). In the
+second mode, it performs "just-in-time" code conversion from the
+abstract code to the host machine's native code. The second mode will
+ultimately allow execution of Java code at the same speed as standard
+compiled code, while also maintaining the advantages and flexibility
+of code independence.
 
 %package devel
 Summary:	Headers and libtool files for kaffe
