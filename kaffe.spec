@@ -106,7 +106,7 @@ Summary(pt_BR):	Bibliotecas e headers de desenvolvimento para o Kaffe
 Summary(ru):	Хедеры и библиотеки для kaffe
 Summary(uk):	Хедери та б╕бл╕отеки для kaffe
 Group:		Development/Languages/Java
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 Provides:	jdk = 1.1
 
 %description devel
