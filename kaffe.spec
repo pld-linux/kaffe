@@ -6,7 +6,7 @@ Summary(ru):	Свободно распространяемая виртуальная машина для запуска Java(tm) к
 Summary(uk):	В╕льно розповсюджувана в╕ртуальна машина для запуску Java(tm) коду
 Name:		kaffe
 Version:	1.0.6
-Release:	10
+Release:	11
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
@@ -35,6 +35,7 @@ BuildRequires:	libffi-devel
 %endif
 ExcludeArch:	ia64 s390 s390x
 Provides:	jre = 1.1
+Requires:	fastjar
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	kaffe-bissawt
 Conflicts:	ibm-java-sdk
@@ -138,12 +139,13 @@ Bibliotecas e headers de desenvolvimento para o Kaffe.
 %patch9
 
 %build
-rm -f acinclude.m4
+rm -f missing acinclude.m4
 %{__libtoolize}
 aclocal
 %{__autoconf}
 %{__automake}
-%configure --enable-ltdl-install=no
+%configure \
+	--enable-ltdl-install=no
 %{__make}
 
 %install
@@ -152,9 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 rm -rf developers/{glibc-2.1.1-signal.patch,rpm-kaffe.spec} FAQ/CVS
-
-gzip -9nf FAQ/* ChangeLog* README WHATSNEW \
-	developers/README*
+rm -rf $RPM_BUILD_ROOT%{_bindir}/jar
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -164,7 +164,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc FAQ/*.gz
+%doc FAQ/* ChangeLog* README WHATSNEW developers/README*
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libexecdir}/Kaffe
 %attr(755,root,root) %{_libdir}/*.so
