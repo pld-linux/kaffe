@@ -22,6 +22,8 @@ Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-amfix.patch
 Patch8:		%{name}-ltfix.patch
 Patch9:		%{name}-dyn_ltdl.patch
+Patch10:	%{name}-cpp.patch
+Patch11:	%{name}-gcc33.patch
 URL:		http://www.kaffe.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -137,10 +139,12 @@ Bibliotecas e headers de desenvolvimento para o Kaffe.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9
+%patch9 -p0
+%patch10 -p1
+%patch11 -p1
 
 %build
-rm -f missing acinclude.m4
+rm -f acinclude.m4
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -152,7 +156,8 @@ rm -f missing acinclude.m4
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 rm -rf developers/{CVS,glibc-2.1.1-signal.patch,rpm-kaffe.spec} FAQ/CVS
 rm -rf $RPM_BUILD_ROOT%{_bindir}/jar
