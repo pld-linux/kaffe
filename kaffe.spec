@@ -10,7 +10,7 @@ Patch0:		kaffe-alpha.patch
 Patch1:		kaffe-perlpath.patch
 URL:		http://www.kaffe.org/
 Obsoletes:	kaffe-bissawt
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Kaffe is a free virtual machine designed to execute Java(TM) bytecode. Kaffe
