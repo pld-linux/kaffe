@@ -1,0 +1,26 @@
+--- kaffe-1.0.6/kaffe/kaffevm/jit3/machine.h.orig	1999-12-05 02:44:45.000000000 +0100
++++ kaffe-1.0.6/kaffe/kaffevm/jit3/machine.h	2004-03-31 20:57:52.166973888 +0200
+@@ -148,8 +148,8 @@
+ 	int     codelen;
+ } nativeCodeInfo;
+ 
+-#define	willCatch(FLAG)	willcatch.##FLAG = true
+-#define	canCatch(FLAG)	willcatch.##FLAG
++#define	willCatch(FLAG)	willcatch.FLAG = true
++#define	canCatch(FLAG)	willcatch.FLAG
+ 
+ void setupGlobalRegisters(void);
+ void setupArgumentRegisters(void);
+--- kaffe-1.0.6/config/i386/linux/md.h.orig	2000-05-23 19:55:34.000000000 +0200
++++ kaffe-1.0.6/config/i386/linux/md.h	2004-03-31 21:16:31.917745896 +0200
+@@ -23,8 +23,8 @@
+ extern void init_md(void);
+ #define	INIT_MD()	init_md()
+ 
+-#define SIGNAL_ARGS(sig, sc) int sig, struct sigcontext *##sc
+-#define SIGNAL_CONTEXT_POINTER(sc) struct sigcontext *##sc
++#define SIGNAL_ARGS(sig, sc) int sig, struct sigcontext *sc
++#define SIGNAL_CONTEXT_POINTER(sc) struct sigcontext *sc
+ #define GET_SIGNAL_CONTEXT_POINTER(sc) (&sc)
+ #define SIGNAL_PC(scp) scp->eip
+ 
