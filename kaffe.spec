@@ -103,7 +103,7 @@ rm -f acinclude.m4
 libtoolize --copy --force --ltdl
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 %configure
 %{__make}
 
