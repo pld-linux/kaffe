@@ -141,7 +141,7 @@ Bibliotecas e headers de desenvolvimento para o Kaffe.
 %build
 rm -f missing acinclude.m4
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
