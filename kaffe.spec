@@ -2,6 +2,8 @@ Summary:	A free virtual machine for running Java(TM) code
 Summary(es):	MАquina virtual free para ejecutar cСdigo Java(tm)
 Summary(pl):	Darmowa maszyna wirtualna Javy
 Summary(pt_BR):	MАquina virtual free para rodar cСdigo Java(tm)
+Summary(ru):	Свободно распространяемая виртуальная машина для запуска Java(tm) кода
+Summary(uk):	В╕льно розповсюджувана в╕ртуальна машина для запуску Java(tm) коду
 Name:		kaffe
 Version:	1.0.6
 Release:	10
@@ -74,10 +76,33 @@ cСdigo abstrato para o cСdigo nativo de mАquina. Isto permite a
 execuГЦo de cСdigo Java na mesma velocidade que o cСdigo compilado,
 com as vantagens da flexibilidade e independЙncia de cСdigo.
 
+%description -l ru
+Это -- Kaffe, виртуальная машина разработанная для выполнения байткода
+Java. Эта машина может быть использована в двух режимах. В первом она
+работает как "чистый" интепретатор байткода (подобно машине из JDK/JRE
+от Javasoft'а); во втором режиме она выполняет компиляцию типа
+"just-in-time" (то есть преобразует из абстрактного байт-кода в
+машинный код перед исполнением). Это в пределе может позволить
+программам, написанным на Java, исполняться с той же скоростью как и
+стандартный откомпилированный код сохранив при этом все премущества и
+гибкость машинно-независимого подхода.
+
+%description -l uk
+Це -- Kaffe, в╕ртуальна машина, розроблена для виконання байткоду
+Java. Ця машина може бути використана в двох режимах. В першому вона
+працю╓ як "чистий" ╕нтерпретатор байткоду (так само, як машина з
+JDK/JRE в╕д Javasoft); в другому - викону╓ комп╕ляц╕ю "just-in-time"
+(перетворю╓ з абстрактного байт-коду в машинний код перед виконанням).
+Це в ╕деал╕ може дозволити програмам, написаним на Java, виконуватися
+з тою ж швидк╕стю, як ╕ стандартний скомп╕льований код, збер╕гаючи при
+цьому все переваги та гнучк╕сть машинно-незалежного п╕дходу.
+
 %package devel
 Summary:	Headers and libtool files for kaffe
 Summary(pl):	Pliki nagЁСwkowe i skrypty libtoola dla kaffe
 Summary(pt_BR):	Bibliotecas e headers de desenvolvimento para o Kaffe
+Summary(ru):	Хедеры и библиотеки для kaffe
+Summary(uk):	Хедери та б╕бл╕отеки для kaffe
 Group:		Development/Languages/Java
 Requires:	%{name} = %{version}
 Provides:	jdk = 1.1
@@ -90,6 +115,14 @@ Pliki nagЁСwkowe i skrypty libtoola dla kaffe.
 
 %description devel -l pt_BR
 Bibliotecas e headers de desenvolvimento para o Kaffe.
+
+%description devel -l ru
+Хедеры и библиотеки для разработок с использованием kaffe (включая
+компиляцию java-программ).
+
+%description devel -l uk
+Хедери та б╕бл╕отеки для розробок з використанням kaffe (включаючи
+комп╕ляц╕ю java-програм).
 
 %prep
 %setup -q
