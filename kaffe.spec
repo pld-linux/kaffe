@@ -8,8 +8,6 @@ Release:	8
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
-Group(de):	Entwicklung/Sprachen/Java
-Group(pl):	Programowanie/Jêzyki/Java
 Source0:	http://www.kaffe.org/ftp/pub/kaffe/%{name}-%{version}.tar.gz
 Patch0:		%{name}-alpha.patch
 Patch1:		%{name}-perlpath.patch
@@ -77,8 +75,6 @@ Summary:	Headers and libtool files for kaffe
 Summary(pl):	Pliki nag³ówkowe i skrypty libtoola dla kaffe
 Summary(pt_BR):	Bibliotecas e headers de desenvolvimento para o Kaffe
 Group:		Development/Languages/Java
-Group(de):	Entwicklung/Sprachen/Java
-Group(pl):	Programowanie/Jêzyki/Java
 Requires:	%{name} = %{version}
 
 %description devel
