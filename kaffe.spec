@@ -1,6 +1,7 @@
 Summary:	A free virtual machine for running Java(TM) code
 Summary(es):	Máquina virtual free para ejecutar código Java(tm)
-Summary(pt_BR):Máquina virtual free para rodar código Java(tm)
+Summary(pl):	Darmowa maszyna wirtualna Javy
+Summary(pt_BR):	Máquina virtual free para rodar código Java(tm)
 Name:		kaffe
 Version:	1.0.6
 Release:	7
@@ -49,6 +50,13 @@ abstracto para el código nativo de máquina. Esto permite la ejecución
 de código Java en la misma velocidad que el código compilado, con las
 ventajas de la flexibilidad y independencia de código.
 
+%description -l pl
+Kaffe jest darmow± maszyn± wirtualn± do uruchamiania bytecodu Javy.
+Mo¿e byæ u¿ywana w dwóch trybach: w pierwszym jako czysty interpreter
+bytecodu, w drugim przeprowadza "w locie" konwersjê bytecodu na kod
+natywny maszyny. Drugi tryb pozwala uruchamiaæ kod Javy tak szybko jak
+kod skompilowany, pozostawiaj±c niezale¿no¶æ kodu od platformy.
+
 %description -l pt_BR
 Kaffe é uma máquina virtual projetada para executar bytecode Java.
 Esta máquina pode ser configurada em dois modos. Em um modo ela opera
@@ -60,8 +68,8 @@ com as vantagens da flexibilidade e independência de código.
 
 %package devel
 Summary:	Headers and libtool files for kaffe
-Summary(es):	Development libraries and headers for Kaffe
-Summary(pt_BR):Bibliotecas e headers de desenvolvimento para o Kaffe
+Summary(pl):	Pliki nag³ówkowe i skrypty libtoola dla kaffe
+Summary(pt_BR):	Bibliotecas e headers de desenvolvimento para o Kaffe
 Group:		Development/Languages/Java
 Group(de):	Entwicklung/Sprachen/Java
 Group(pl):	Programowanie/Jêzyki/Java
@@ -70,8 +78,8 @@ Requires:	%{name} = %{version}
 %description devel
 Headers and libtool files for kaffe.
 
-%description devel -l es
-Development libraries and headers for Kaffe.
+%description devel -l pl
+Pliki nag³ówkowe i skrypty libtoola dla kaffe.
 
 %description -l pt_BR devel
 Bibliotecas e headers de desenvolvimento para o Kaffe.
@@ -100,11 +108,11 @@ rm -rf developers/{glibc-2.1.1-signal.patch,rpm-kaffe.spec} FAQ/CVS
 gzip -9nf FAQ/* ChangeLog* README WHATSNEW \
 	developers/README*
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
