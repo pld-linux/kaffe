@@ -4,7 +4,7 @@ Summary(pl):	Darmowa maszyna wirtualna Javy
 Summary(pt_BR):	Máquina virtual free para rodar código Java(tm)
 Name:		kaffe
 Version:	1.0.6
-Release:	9
+Release:	10
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
@@ -18,6 +18,7 @@ Patch5:		%{name}-time.patch
 Patch6:		%{name}-acfix.patch
 Patch7:		%{name}-amfix.patch
 Patch8:		%{name}-ltfix.patch
+Patch9:		%{name}-dyn_ltdl.patch
 URL:		http://www.kaffe.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -101,14 +102,15 @@ Bibliotecas e headers de desenvolvimento para o Kaffe.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9
 
 %build
 rm -f acinclude.m4
-libtoolize --copy --force --ltdl
+libtoolize --copy --force
 aclocal
 autoconf
 automake -a -c -f
-%configure
+%configure --enable-ltdl-install=no
 %{__make}
 
 %install
