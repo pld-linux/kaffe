@@ -10,7 +10,8 @@ Release:	13
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
-Source0:	http://www.kaffe.org/ftp/pub/kaffe/%{name}-%{version}.tar.gz
+# devel versions (better) http://www.kaffe.org/ftp/pub/kaffe/v1.1.x-development/
+Source0:	http://www.kaffe.org/ftp/pub/kaffe/v1.0.x-production/%{name}-%{version}.tar.gz
 # Source0-md5:	5a900dd33e7bde48d2fa94ada273e80e
 Patch0:		%{name}-alpha.patch
 Patch1:		%{name}-perlpath.patch
@@ -109,7 +110,7 @@ Summary(pt_BR):	Bibliotecas e headers de desenvolvimento para o Kaffe
 Summary(ru):	Хедеры и библиотеки для kaffe
 Summary(uk):	Хедери та б╕бл╕отеки для kaffe
 Group:		Development/Languages/Java
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	jdk = 1.1
 
 %description devel
