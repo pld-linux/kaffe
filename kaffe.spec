@@ -27,6 +27,9 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
 BuildRequires:	libungif-devel
+%ifarch ppc
+BuildRequires:	libffi-devel
+%endif
 ExcludeArch:	ia64 s390 s390x
 Provides:	jre = 1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
