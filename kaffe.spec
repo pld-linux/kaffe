@@ -13,6 +13,7 @@ Patch1:		%{name}-perlpath.patch
 Patch2:		%{name}-getBytes.patch
 Patch3:		%{name}-sparc.patch
 Patch4:		%{name}-jlong.patch
+Patch5:		%{name}-time.patch
 URL:		http://www.kaffe.org/
 Obsoletes:	kaffe-bissawt
 Provides:	java
@@ -47,8 +48,10 @@ Headers and libtool files for kaffe.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
+autoconf
 %configure
 %{__make}
 
