@@ -24,3 +24,14 @@
  #define GET_SIGNAL_CONTEXT_POINTER(sc) (&sc)
  #define SIGNAL_PC(scp) scp->eip
  
+--- kaffe-1.0.6/kaffe/kaffevm/systems/unix-jthreads/jthread.c.orig	Wed Jun 21 09:04:40 2000
++++ kaffe-1.0.6/kaffe/kaffevm/systems/unix-jthreads/jthread.c	Thu Apr  1 10:09:21 2004
+@@ -135,7 +135,7 @@
+ 
+ /* A signal context pointer type, used in parameter lists/declarations */
+ #ifndef SIGNAL_CONTEXT_POINTER
+-#define SIGNAL_CONTEXT_POINTER(x) void *##x
++#define SIGNAL_CONTEXT_POINTER(x) void *x
+ #endif
+ 
+ /* Get the PC from a signal context pointer */
