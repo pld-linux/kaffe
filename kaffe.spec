@@ -4,7 +4,7 @@ Summary(pl):	Darmowa maszyna wirtualna Javy
 Summary(pt_BR):	Máquina virtual free para rodar código Java(tm)
 Name:		kaffe
 Version:	1.0.6
-Release:	8
+Release:	9
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
@@ -79,6 +79,7 @@ Summary(pl):	Pliki nag³ówkowe i skrypty libtoola dla kaffe
 Summary(pt_BR):	Bibliotecas e headers de desenvolvimento para o Kaffe
 Group:		Development/Languages/Java
 Requires:	%{name} = %{version}
+Provides:	jdk = 1.1
 
 %description devel
 Headers and libtool files for kaffe.
