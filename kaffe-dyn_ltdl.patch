@@ -1,0 +1,63 @@
+--- Makefile.am~	Mon Oct 18 22:27:40 1999
++++ Makefile.am	Mon May  6 12:25:09 2002
+@@ -8,7 +8,7 @@
+ 
+ AUTOMAKE_OPTIONS = foreign 1.3e
+ 
+-SUBDIRS = . config include libltdl libraries kaffe test
++SUBDIRS = . config include libraries kaffe test
+ 
+ EXTRA_DIST = \
+ 	ChangeLog.1 \
+--- kaffe/kaffe/Makefile.am~	Tue May 23 22:07:29 2000
++++ kaffe/kaffe/Makefile.am	Mon May  6 12:41:49 2002
+@@ -8,7 +8,7 @@
+ 
+ libexec_PROGRAMS = Kaffe
+ 
+-INCLUDES = -I../kaffevm -I$(srcdir)/../kaffevm -I$(top_srcdir)/libltdl \
++INCLUDES = -I../kaffevm -I$(srcdir)/../kaffevm \
+ 	-I$(top_srcdir)/kaffe/xprof
+ 
+ Kaffe_SOURCES = main.c version.c
+--- kaffe/kaffevm/Makefile.am~	Mon May  6 12:31:15 2002
++++ kaffe/kaffevm/Makefile.am	Mon May  6 12:43:49 2002
+@@ -21,7 +21,7 @@
+ 
+ @engine_frag@
+ 
+-INCLUDES = -I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) $(ENGINE_INCLUDES) -I$(top_srcdir)/libltdl $(ENGINE_DEFS) -I$(top_srcdir)/kaffe/xprof
++INCLUDES = -I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) $(ENGINE_INCLUDES) $(ENGINE_DEFS) -I$(top_srcdir)/kaffe/xprof
+ 
+ lib_LTLIBRARIES = libkaffevm.la
+ 
+--- kaffe/xprof/Makefile.am~	Tue May 23 19:55:37 2000
++++ kaffe/xprof/Makefile.am	Mon May  6 12:45:08 2002
+@@ -12,7 +12,7 @@
+ 
+ @engine_frag@
+ 
+-INCLUDES = -I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) $(ENGINE_INCLUDES) -I$(top_srcdir)/libltdl $(ENGINE_DEFS) -I$(top_srcdir)/kaffe/kaffevm
++INCLUDES = -I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) $(ENGINE_INCLUDES) $(ENGINE_DEFS) -I$(top_srcdir)/kaffe/kaffevm
+ 
+ lib_LTLIBRARIES = libkaffexprof.la
+ 
+--- configure.in~	Wed May  8 11:55:10 2002
++++ configure.in	Wed May  8 11:55:24 2002
+@@ -112,7 +112,7 @@
+ esac
+ 
+ AC_LIBTOOL_DLOPEN
+-AC_LIBLTDL_CONVENIENCE
++AC_LIBLTDL_INSTALLABLE
+ AC_PROG_LIBTOOL
+ AC_SUBST(LIBTOOL_DEPS)
+ AC_SUBST(LIBLTDL)
+@@ -1114,7 +1114,6 @@
+ CPPFLAGS="-DKVER='\"\$(KVER)\"' -I$abssrcdir/kaffe/kaffevm -I$abssrcdir/kaffe/kaffevm/systems/$with_threads -I\$(top_srcdir)/config -I\$(top_srcdir)/include $CPPFLAGS"
+ LIBS="$LIBS $LTLIBS"
+ 
+-AC_CONFIG_SUBDIRS(libltdl)
+ AM_CONFIG_HEADER(config/config.h include/jtypes.h)
+ AC_OUTPUT(Makefile \
+ config/Makefile \
