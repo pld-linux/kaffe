@@ -1,7 +1,7 @@
 Summary:	A free virtual machine for running Java(TM) code
 Name:		kaffe
 Version:	1.0.6
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -17,6 +17,8 @@ URL:		http://www.kaffe.org/
 Obsoletes:	kaffe-bissawt
 Provides:	java
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_libexecdir	%{_libdir}/kaffe
 
 %description
 Kaffe is a free virtual machine designed to execute Java(TM) bytecode.
