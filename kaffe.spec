@@ -6,9 +6,9 @@ Version:	1.0.6
 Release:	7
 Epoch:		1
 License:	GPL
-Group:		Development/Languages
-Group(de):	Entwicklung/Sprachen
-Group(pl):	Programowanie/Jêzyki
+Group:		Development/Languages/Java
+Group(de):	Entwicklung/Sprachen/Java
+Group(pl):	Programowanie/Jêzyki/Java
 Source0:	http://www.kaffe.org/ftp/pub/kaffe/%{name}-%{version}.tar.gz
 Patch0:		%{name}-alpha.patch
 Patch1:		%{name}-perlpath.patch
@@ -62,9 +62,9 @@ com as vantagens da flexibilidade e independência de código.
 Summary:	Headers and libtool files for kaffe
 Summary(es):	Development libraries and headers for Kaffe
 Summary(pt_BR):Bibliotecas e headers de desenvolvimento para o Kaffe
-Group:		Development/Languages
-Group(de):	Entwicklung/Sprachen
-Group(pl):	Programowanie/Jêzyki
+Group:		Development/Languages/Java
+Group(de):	Entwicklung/Sprachen/Java
+Group(pl):	Programowanie/Jêzyki/Java
 Requires:	%{name} = %{version}
 
 %description devel
