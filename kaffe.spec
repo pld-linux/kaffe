@@ -23,6 +23,7 @@ BuildRequires:	gmp-devel >= 3.1.1
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libungif-devel
+BuildRequires:	autoconf
 ExcludeArch:	ia64 s390 s390x
 Provides:	jre = 1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
