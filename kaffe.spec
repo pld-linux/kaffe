@@ -141,8 +141,8 @@ Bibliotecas e headers de desenvolvimento para o Kaffe.
 rm -f acinclude.m4
 libtoolize --copy --force
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure --enable-ltdl-install=no
 %{__make}
 
