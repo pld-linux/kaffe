@@ -22,13 +22,13 @@ Patch7:		%{name}-amfix.patch
 Patch8:		%{name}-ltfix.patch
 URL:		http://www.kaffe.org/
 BuildRequires:	XFree86-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gmp-devel >= 3.1.1
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
-BuildRequires:	libungif-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	libungif-devel
 ExcludeArch:	ia64 s390 s390x
 Provides:	jre = 1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
