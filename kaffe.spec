@@ -4,7 +4,7 @@ Summary(pl):	Darmowa maszyna wirtualna Javy
 Summary(pt_BR):	Máquina virtual free para rodar código Java(tm)
 Name:		kaffe
 Version:	1.0.6
-Release:	7
+Release:	8
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
@@ -17,6 +17,9 @@ Patch2:		%{name}-getBytes.patch
 Patch3:		%{name}-sparc.patch
 Patch4:		%{name}-jlong.patch
 Patch5:		%{name}-time.patch
+Patch6:		%{name}-acfix.patch
+Patch7:		%{name}-amfix.patch
+Patch8:		%{name}-ltfix.patch
 URL:		http://www.kaffe.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	gmp-devel >= 3.1.1
@@ -24,6 +27,8 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libungif-devel
 BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool
 ExcludeArch:	ia64 s390 s390x
 Provides:	jre = 1.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -82,7 +87,7 @@ Headers and libtool files for kaffe.
 %description devel -l pl
 Pliki nag³ówkowe i skrypty libtoola dla kaffe.
 
-%description -l pt_BR devel
+%description devel -l pt_BR
 Bibliotecas e headers de desenvolvimento para o Kaffe.
 
 %prep
@@ -93,9 +98,16 @@ Bibliotecas e headers de desenvolvimento para o Kaffe.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 %build
+rm -f acinclude.m4
+libtoolize --copy --force --ltdl
+aclocal
 autoconf
+automake -a -c
 %configure
 %{__make}
 

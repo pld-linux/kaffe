@@ -1,0 +1,57 @@
+--- kaffe-1.0.6/configure.in.orig	Fri Oct 19 23:07:09 2001
++++ kaffe-1.0.6/configure.in	Fri Oct 19 23:08:01 2001
+@@ -829,12 +829,12 @@
+ 
+ AC_FUNC_STRFTIME
+ AC_FUNC_MMAP
+-AC_CHECK_FUNCS([dnl
+-select socket getsockname getpagesize dnl
+-memcpy memmove dnl
+-mkdir dnl
+-getcwd chdir getwd gettimeofday ftime time uname getuid dnl
+-localtime dnl
++AC_CHECK_FUNCS([ \
++select socket getsockname getpagesize \
++memcpy memmove \
++mkdir \
++getcwd chdir getwd gettimeofday ftime time uname getuid \
++localtime
+ ])
+ 
+ KSAVE_LIBS="$LIBS"
+@@ -914,16 +914,16 @@
+   AC_DEFINE(STRTOD_m0_BROKEN, 1, [Define if strtod(\"-0.0\") is broken])
+ fi
+ 
+-AC_CHECK_FUNCS([dnl
+-strerror hstrerror dnl
+-fcntl ioctl dnl
+-alarm setitimer dnl
+-sigprocmask sigsetmask sigemptyset sigaddset signal sigaction dnl
+-sbrk valloc memalign mallopt dnl
+-mprotect madvise dnl
+-waitpid kill fork execve execvp dnl
+-sync fsync dnl
+-atexit on_exit vsnprintf snprintf dnl
++AC_CHECK_FUNCS([ \
++strerror hstrerror \
++fcntl ioctl \
++alarm setitimer \
++sigprocmask sigsetmask sigemptyset sigaddset signal sigaction \
++sbrk valloc memalign mallopt \
++mprotect madvise \
++waitpid kill fork execve execvp \
++sync fsync \
++atexit on_exit vsnprintf snprintf
+ ])
+ 
+ if test "$Khost_cpu" = "alpha" ; then
+@@ -1082,7 +1082,7 @@
+ dnl Extract path and dir separator information from paths.h
+ dnl -------------------------------------------------------------------------
+ 
+-AC_REQUIRE([AC_PROG_CPP])
++AC_PROG_CPP
+ 
+ AC_CACHE_CHECK([for path separator],ac_cv_kaffe_pathsep,
+ [	rm -f conftest.c

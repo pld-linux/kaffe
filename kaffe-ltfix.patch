@@ -1,0 +1,29 @@
+--- kaffe-1.0.6/kaffe/kaffevm/external.c.orig	Mon Jun 12 20:03:32 2000
++++ kaffe-1.0.6/kaffe/kaffevm/external.c	Sat Oct 20 00:06:13 2001
+@@ -48,12 +48,12 @@
+ #endif
+ 
+ #ifndef LIBRARYINIT
+-static inline lt_ptr_t kdlmalloc(size_t len) { 
++static inline lt_ptr kdlmalloc(size_t len) { 
+ 	void *ptr = KMALLOC(len);
+ 	addToCounter(&ltmem, "vmmem-libltdl", 1, GCSIZEOF(ptr));
+ 	return (ptr);
+ }
+-static inline void kdlfree(lt_ptr_t ptr) { 
++static inline void kdlfree(lt_ptr ptr) { 
+ 	addToCounter(&ltmem, "vmmem-libltdl", 1, -((jlong)GCSIZEOF(ptr)));
+ 	KFREE(ptr); 
+ }
+@@ -83,9 +83,9 @@
+ } libHandle[MAXLIBS];
+ 
+ #ifndef LIBRARYFUNCTION
+-static inline lt_ptr_t findLibraryFunction(const char *name) {
++static inline lt_ptr findLibraryFunction(const char *name) {
+   int i = 0;
+-  lt_ptr_t ptr = 0;
++  lt_ptr ptr = 0;
+ 
+   while (!ptr && libHandle[i].ref && i < MAXLIBS) {
+     ptr = lt_dlsym(libHandle[i].desc, name);
