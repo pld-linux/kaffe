@@ -1,7 +1,7 @@
 Summary:	A free virtual machine for running Java(TM) code.
 Name:		kaffe
 Version:	1.0.5
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
@@ -47,8 +47,11 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT{%{_libdir},%{_libdir}/kaffe}/*.so
 
+rm -f developers/{glibc-2.1.1-signal.patch,rpm-kaffe.spec}
+
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	FAQ/* ChangeLog* README WHATSNEW
+	FAQ/* ChangeLog* README WHATSNEW \
+	developers/README*
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
