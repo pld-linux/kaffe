@@ -30,6 +30,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gmp-devel >= 3.1.1
 BuildRequires:	libjpeg-devel
+BuildRequires:	libltdl-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtool
 BuildRequires:	libungif-devel
