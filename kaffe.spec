@@ -6,7 +6,7 @@ Summary(ru):	Свободно распространяемая виртуальная машина для запуска Java(tm) к
 Summary(uk):	В╕льно розповсюджувана в╕ртуальна машина для запуску Java(tm) коду
 Name:		kaffe
 Version:	1.0.6
-Release:	11
+Release:	12
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
@@ -153,7 +153,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-rm -rf developers/{glibc-2.1.1-signal.patch,rpm-kaffe.spec} FAQ/CVS
+rm -rf developers/{CVS,glibc-2.1.1-signal.patch,rpm-kaffe.spec} FAQ/CVS
 rm -rf $RPM_BUILD_ROOT%{_bindir}/jar
 
 %clean
@@ -164,11 +164,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc FAQ/* ChangeLog* README WHATSNEW developers/README*
+%doc FAQ/* ChangeLog* README WHATSNEW
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libexecdir}/Kaffe
 %attr(755,root,root) %{_libdir}/*.so
 %dir %{_libdir}/kaffe
+%{_libdir}/kaffe/*.la
 %attr(755,root,root) %{_libdir}/kaffe/*.so
 %{_libdir}/kaffe/security
 %{_mandir}/man1/kaffe.1*
@@ -179,4 +180,3 @@ rm -rf $RPM_BUILD_ROOT
 %doc developers/*
 %{_includedir}/kaffe
 %{_libdir}/*.la
-%{_libdir}/kaffe/*.la
