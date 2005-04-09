@@ -1,0 +1,11 @@
+--- kaffe-1.1.5/configure.ac.orig	2005-04-09 14:45:40.000000000 +0000
++++ kaffe-1.1.5/configure.ac	2005-04-09 14:45:47.000000000 +0000
+@@ -33,7 +33,7 @@
+ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ ])
+ 
+-AM_INIT_AUTOMAKE([1.9.5 tar-ustar])
++AM_INIT_AUTOMAKE([1.9.4 tar-ustar])
+ 
+ AC_PREFIX_DEFAULT(/usr/local/kaffe)
+ 
