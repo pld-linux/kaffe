@@ -1,63 +1,94 @@
---- Makefile.am~	Mon Oct 18 22:27:40 1999
-+++ Makefile.am	Mon May  6 12:25:09 2002
-@@ -8,7 +8,7 @@
- 
- AUTOMAKE_OPTIONS = foreign 1.3e
- 
--SUBDIRS = . config include libltdl libraries kaffe test
-+SUBDIRS = . config include libraries kaffe test
- 
- EXTRA_DIST = \
- 	ChangeLog.1 \
---- kaffe/kaffe/Makefile.am~	Tue May 23 22:07:29 2000
-+++ kaffe/kaffe/Makefile.am	Mon May  6 12:41:49 2002
-@@ -8,7 +8,7 @@
- 
- libexec_PROGRAMS = Kaffe
- 
--INCLUDES = -I../kaffevm -I$(srcdir)/../kaffevm -I$(top_srcdir)/libltdl \
-+INCLUDES = -I../kaffevm -I$(srcdir)/../kaffevm \
- 	-I$(top_srcdir)/kaffe/xprof
- 
- Kaffe_SOURCES = main.c version.c
---- kaffe/kaffevm/Makefile.am~	Mon May  6 12:31:15 2002
-+++ kaffe/kaffevm/Makefile.am	Mon May  6 12:43:49 2002
-@@ -21,7 +21,7 @@
- 
- @engine_frag@
- 
--INCLUDES = -I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) $(ENGINE_INCLUDES) -I$(top_srcdir)/libltdl $(ENGINE_DEFS) -I$(top_srcdir)/kaffe/xprof
-+INCLUDES = -I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) $(ENGINE_INCLUDES) $(ENGINE_DEFS) -I$(top_srcdir)/kaffe/xprof
- 
- lib_LTLIBRARIES = libkaffevm.la
- 
---- kaffe/xprof/Makefile.am~	Tue May 23 19:55:37 2000
-+++ kaffe/xprof/Makefile.am	Mon May  6 12:45:08 2002
-@@ -12,7 +12,7 @@
- 
- @engine_frag@
- 
--INCLUDES = -I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) $(ENGINE_INCLUDES) -I$(top_srcdir)/libltdl $(ENGINE_DEFS) -I$(top_srcdir)/kaffe/kaffevm
-+INCLUDES = -I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) $(ENGINE_INCLUDES) $(ENGINE_DEFS) -I$(top_srcdir)/kaffe/kaffevm
- 
- lib_LTLIBRARIES = libkaffexprof.la
- 
---- configure.in~	Wed May  8 11:55:10 2002
-+++ configure.in	Wed May  8 11:55:24 2002
-@@ -112,7 +112,7 @@
+diff -Nur kaffe-1.1.5.orig/Makefile.am kaffe-1.1.5/Makefile.am
+--- kaffe-1.1.5.orig/Makefile.am	2005-04-08 18:16:09.000000000 +0000
++++ kaffe-1.1.5/Makefile.am	2005-04-08 18:17:44.000000000 +0000
+@@ -25,7 +25,6 @@
+ 	. \
+ 	libraries/javalib \
+ 	config \
+-	libltdl \
+ 	$(MAYBE_BINRELOC_DIR) \
+ 	kaffe/kaffeh \
+ 	include  \
+@@ -241,7 +240,6 @@
+ 	config \
+ 	include \
+ 	replace \
+-	libltdl \
+ 	kaffe/kaffevm \
+ 	libraries/clib \
+ 	kaffe
+diff -Nur kaffe-1.1.5.orig/configure.ac kaffe-1.1.5/configure.ac
+--- kaffe-1.1.5.orig/configure.ac	2005-04-05 17:49:39.000000000 +0000
++++ kaffe-1.1.5/configure.ac	2005-04-08 18:20:33.000000000 +0000
+@@ -294,7 +294,7 @@
  esac
  
  AC_LIBTOOL_DLOPEN
 -AC_LIBLTDL_CONVENIENCE
 +AC_LIBLTDL_INSTALLABLE
+ AC_LIBTOOL_WIN32_DLL
  AC_PROG_LIBTOOL
  AC_SUBST(LIBTOOL_DEPS)
- AC_SUBST(LIBLTDL)
-@@ -1114,7 +1114,6 @@
- CPPFLAGS="-DKVER='\"\$(KVER)\"' -I$abssrcdir/kaffe/kaffevm -I$abssrcdir/kaffe/kaffevm/systems/$with_threads -I\$(top_srcdir)/config -I\$(top_srcdir)/include $CPPFLAGS"
- LIBS="$LIBS $LTLIBS"
+@@ -2234,7 +2234,6 @@
+ AC_SUBST(CFLAGS_WITHOUT_PG)
  
--AC_CONFIG_SUBDIRS(libltdl)
- AM_CONFIG_HEADER(config/config.h include/jtypes.h)
- AC_OUTPUT(Makefile \
- config/Makefile \
+ 
+-AC_CONFIG_SUBDIRS([libltdl])
+ AC_CONFIG_HEADERS([config/config.h include/kaffe/jni_md.h])
+ AC_CONFIG_FILES([Makefile])
+ AC_CONFIG_FILES([project.xml project.properties])
+diff -Nur kaffe-1.1.5.orig/kaffe/kaffe/Makefile.am kaffe-1.1.5/kaffe/kaffe/Makefile.am
+--- kaffe-1.1.5.orig/kaffe/kaffe/Makefile.am	2005-04-08 18:16:09.000000000 +0000
++++ kaffe-1.1.5/kaffe/kaffe/Makefile.am	2005-04-08 18:18:10.000000000 +0000
+@@ -31,7 +31,6 @@
+ AM_CPPFLAGS = \
+ 	-I../kaffevm \
+ 	-I$(srcdir)/../kaffevm \
+-	-I$(top_srcdir)/libltdl \
+ 	-I$(top_srcdir)/kaffe/jvmpi \
+ 	-I$(top_srcdir)/kaffe/xprof \
+ 	-I$(top_srcdir)/kaffe/kaffevm/jni \
+diff -Nur kaffe-1.1.5.orig/kaffe/kaffevm/Makefile.am kaffe-1.1.5/kaffe/kaffevm/Makefile.am
+--- kaffe-1.1.5.orig/kaffe/kaffevm/Makefile.am	2005-04-08 18:16:09.000000000 +0000
++++ kaffe-1.1.5/kaffe/kaffevm/Makefile.am	2005-04-08 18:18:46.000000000 +0000
+@@ -23,7 +23,6 @@
+ 	-I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) \
+ 	-I$(top_srcdir)/kaffe/kaffevm/jni \
+ 	$(ENGINE_INCLUDES) \
+-	-I$(top_srcdir)/libltdl \
+ 	$(ENGINE_DEFS) \
+ 	-I$(top_srcdir)/kaffe/jvmpi \
+ 	-I$(top_srcdir)/kaffe/xprof \
+diff -Nur kaffe-1.1.5.orig/kaffe/kaffevm/jni/Makefile.am kaffe-1.1.5/kaffe/kaffevm/jni/Makefile.am
+--- kaffe-1.1.5.orig/kaffe/kaffevm/jni/Makefile.am	2004-07-05 16:40:46.000000000 +0000
++++ kaffe-1.1.5/kaffe/kaffevm/jni/Makefile.am	2005-04-08 18:19:18.000000000 +0000
+@@ -10,7 +10,6 @@
+ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) \
+ 	$(ENGINE_INCLUDES) \
+-	-I$(top_srcdir)/libltdl \
+ 	$(ENGINE_DEFS) \
+ 	-I$(top_srcdir)/kaffe/jvmpi \
+ 	-I$(top_srcdir)/kaffe/xprof \
+diff -Nur kaffe-1.1.5.orig/kaffe/kaffevm/verifier/Makefile.am kaffe-1.1.5/kaffe/kaffevm/verifier/Makefile.am
+--- kaffe-1.1.5.orig/kaffe/kaffevm/verifier/Makefile.am	2004-07-02 19:24:03.000000000 +0000
++++ kaffe-1.1.5/kaffe/kaffevm/verifier/Makefile.am	2005-04-08 18:19:10.000000000 +0000
+@@ -13,7 +13,6 @@
+         -I$(top_srcdir)/config \
+ 	-I$(top_srcdir)/kaffe/kaffevm/$(THREAD_DIR) \
+ 	$(ENGINE_INCLUDES) \
+-	-I$(top_srcdir)/libltdl \
+ 	$(ENGINE_DEFS) \
+ 	-I$(top_srcdir)/kaffe/jvmpi \
+ 	-I$(top_srcdir)/kaffe/xprof \
+diff -Nur kaffe-1.1.5.orig/test/jni/Makefile.am kaffe-1.1.5/test/jni/Makefile.am
+--- kaffe-1.1.5.orig/test/jni/Makefile.am	2005-01-30 15:17:39.000000000 +0000
++++ kaffe-1.1.5/test/jni/Makefile.am	2005-04-08 18:19:35.000000000 +0000
+@@ -11,7 +11,6 @@
+ AM_CPPFLAGS= \
+ 	-I$(top_builddir)/include \
+ 	-I$(top_srcdir)/include -I$(top_srcdir)/include/kaffe \
+-	-I$(top_srcdir)/libltdl \
+ 	-DCLASSPATH_SOURCE_DIR=\"$(top_srcdir)/test/jni\"
+ 
+ if NEED_LIBXPROF
