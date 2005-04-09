@@ -1,0 +1,29 @@
+--- kaffe-1.1.5/configure.ac.orig	2005-04-09 11:07:23.000000000 +0000
++++ kaffe-1.1.5/configure.ac	2005-04-09 11:09:07.000000000 +0000
+@@ -2149,7 +2149,14 @@
+ toolslibdir=$prefix/lib
+ AC_SUBST(toolslibdir)
+ 
+-jredir=$prefix/jre
++AC_ARG_WITH([jredir],
++	    AS_HELP_STRING([--with-jredir=DIR],
++			   [The directory to install JRE in]))
++if test x"$with_jredir" = x"" ; then
++	jredir=$prefix/jre
++else
++	jredir=$with_jredir
++fi
+ AC_SUBST(jredir)
+ 
+ jrebindir=$jredir/bin
+--- kaffe-1.1.5/kaffe/scripts/kaffe.in.orig	2005-04-09 12:29:29.000000000 +0000
++++ kaffe-1.1.5/kaffe/scripts/kaffe.in	2005-04-09 12:29:36.000000000 +0000
+@@ -55,7 +55,7 @@
+ fi
+ 
+ if test x"${KAFFEHOME+set}"x != x"set"x; then
+-  KAFFEHOME="@prefix@"
++  KAFFEHOME="@jredir@"
+ fi
+ export KAFFEHOME
+ 
