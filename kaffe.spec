@@ -1,3 +1,8 @@
+#
+# TODO:
+# - cairo+pango
+# - can more files be moved %%{name} -> devel?
+
 Summary:	A free virtual machine for running Java(TM) code
 Summary(es):	MАquina virtual free para ejecutar cСdigo Java(tm)
 Summary(pl):	Darmowa maszyna wirtualna Javy
@@ -5,47 +10,56 @@ Summary(pt_BR):	MАquina virtual free para rodar cСdigo Java(tm)
 Summary(ru):	Свободно распространяемая виртуальная машина для запуска Java(tm) кода
 Summary(uk):	В╕льно розповсюджувана в╕ртуальна машина для запуску Java(tm) коду
 Name:		kaffe
-Version:	1.0.6
-Release:	13
+Version:	1.1.5
+Release:	0.1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
-# devel versions (better) http://www.kaffe.org/ftp/pub/kaffe/v1.1.x-development/
-Source0:	http://www.kaffe.org/ftp/pub/kaffe/v1.0.x-production/%{name}-%{version}.tar.gz
-# Source0-md5:	5a900dd33e7bde48d2fa94ada273e80e
+Source0:	http://www.kaffe.org/ftp/pub/kaffe/v1.1.x-development/%{name}-%{version}.tar.gz
+# Source0-md5:	928c578d4808012fe5ba5587071d2aa2
 Patch0:		%{name}-alpha.patch
-Patch1:		%{name}-perlpath.patch
-Patch2:		%{name}-getBytes.patch
-Patch3:		%{name}-sparc.patch
-Patch4:		%{name}-jlong.patch
-Patch5:		%{name}-time.patch
-Patch6:		%{name}-acfix.patch
-Patch7:		%{name}-amfix.patch
-Patch8:		%{name}-ltfix.patch
-Patch9:		%{name}-dyn_ltdl.patch
-Patch10:	%{name}-cpp.patch
-Patch11:	%{name}-gcc33.patch
+Patch1:		%{name}-dyn_ltdl.patch
+Patch2:		%{name}-posix-sh.patch
+Patch3:		%{name}-jredir.patch
+Patch4:		%{name}-automake-1_9_4.patch
 URL:		http://www.kaffe.org/
-BuildRequires:	XFree86-devel
+BuildRequires:	alsa-lib-devel >= 1.0.1
 BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.9.4
+BuildRequires:	esound-devel >= 0.2.1
+BuildRequires:	gettext-devel
+BuildRequires:	glib2-devel >= 2.2
 BuildRequires:	gmp-devel >= 3.1.1
-BuildRequires:	libjpeg-devel
+BuildRequires:	gtk+2-devel >= 2:2.4
+BuildRequires:	jikes >= 1.21
 BuildRequires:	libltdl-devel
-BuildRequires:	libpng-devel
 BuildRequires:	libtool
-BuildRequires:	libungif-devel
+BuildRequires:	perl-base
+BuildRequires:	pkgconfig
+BuildRequires:	zip
 %ifarch ppc
 BuildRequires:	libffi-devel
 %endif
 Requires:	fastjar
-Provides:	jre = 1.1
+Provides:	jre = 1.4
 Obsoletes:	kaffe-bissawt
 Conflicts:	ibm-java-sdk
-ExclusiveArch:	alpha arm %{ix86} m68k mips ppc sparc sparc64 sparcv9
+ExclusiveArch:	alpha arm %{ix86} m68k mips ppc sparc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_libexecdir	%{_libdir}/kaffe
+%define		_jredir	%{_libdir}/java
+%ifarch %{ix86}
+%define		_archdir %{_jredir}/lib/i386
+%endif
+%ifarch amd64
+%define		_archdir %{_jredir}/lib/x86_64
+%endif
+%ifarch alpha arm m68k mips sparc
+%define		_archdir %{_jredir}/lib/%{_arch}
+%endif
+%ifarch ppc
+%define		_archdir %{_jredir}/lib/powerpc
+%endif
 
 %description
 Kaffe is a free virtual machine designed to execute Java(TM) bytecode.
@@ -111,7 +125,8 @@ Summary(ru):	Хедеры и библиотеки для kaffe
 Summary(uk):	Хедери та б╕бл╕отеки для kaffe
 Group:		Development/Languages/Java
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Provides:	jdk = 1.1
+Requires:	jikes >= 1.22-2
+Provides:	jdk = 1.4
 
 %description devel
 Headers and libtool files for kaffe.
@@ -137,22 +152,16 @@ Bibliotecas e headers de desenvolvimento para o Kaffe.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p0
-%patch10 -p1
-%patch11 -p1
 
 %build
 rm -f acinclude.m4
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-ltdl-install=no
+	--enable-ltdl-install=no \
+	--with-jredir=%{_jredir}
 %{__make}
 
 %install
@@ -161,8 +170,12 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+ln -s %{_bindir}/javac $RPM_BUILD_ROOT%{_jredir}/bin
+
 rm -rf developers/{CVS,glibc-2.1.1-signal.patch,rpm-kaffe.spec} FAQ/CVS
 rm -rf $RPM_BUILD_ROOT%{_bindir}/jar
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -170,21 +183,37 @@ rm -rf $RPM_BUILD_ROOT
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc FAQ/* ChangeLog* README WHATSNEW
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libexecdir}/Kaffe
-%attr(755,root,root) %{_libdir}/*.so
-%dir %{_libdir}/kaffe
-%{_libdir}/kaffe/*.la
-%attr(755,root,root) %{_libdir}/kaffe/*.so
-%{_libdir}/kaffe/security
+%dir %{_jredir}
+%dir %{_jredir}/bin
+%attr(755,root,root) %{_jredir}/bin/java
+%attr(755,root,root) %{_jredir}/bin/kaffe*
+%attr(755,root,root) %{_jredir}/bin/rmiregistry
+%dir %{_jredir}/lib
+%{_jredir}/lib/gmpjavamath.jar
+%{_jredir}/lib/rt.jar
+%{_jredir}/lib/*.properties
+%{_jredir}/lib/security
+%attr(755,root,root) %{_archdir}
+%attr(755,root,root) %{_bindir}/appletviewer
+%attr(755,root,root) %{_bindir}/install-jar
+%attr(755,root,root) %{_bindir}/java
+%attr(755,root,root) %{_bindir}/kaffe*
+%attr(755,root,root) %{_bindir}/native2ascii
+%attr(755,root,root) %{_bindir}/rmi*
+%attr(755,root,root) %{_bindir}/serialver
+%{_libdir}/awt
 %{_mandir}/man1/kaffe.1*
-%{_datadir}/kaffe
 
 %files devel
 %defattr(644,root,root,755)
 %doc developers/*
-%{_includedir}/kaffe
-%{_libdir}/*.la
+%attr(755,root,root) %{_bindir}/javac
+%attr(755,root,root) %{_bindir}/javadoc
+%attr(755,root,root) %{_bindir}/javah
+%attr(755,root,root) %{_bindir}/javap
+%attr(755,root,root) %{_jredir}/bin/javac
+%{_jredir}/lib/tools.jar
+%{_includedir}/*
