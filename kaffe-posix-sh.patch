@@ -1,0 +1,11 @@
+--- kaffe-1.1.5/m4/compile_value.m4.orig	2005-04-09 00:02:44.000000000 +0000
++++ kaffe-1.1.5/m4/compile_value.m4	2005-04-09 00:07:10.000000000 +0000
+@@ -81,7 +81,7 @@
+       };],
+       [],
+       [ac_c_compile_value=`
+-        typeset -i n=\`sed -ne 's/^e4VA0x\(.*\)Y3pM$/0x\1/p' < conftest.o\`;
++        typeset -i n=\`perl -ne 'print eval($''1) if /^e4VA(0x.*)Y3pM$/' < conftest.o\`;
+         echo $n`],
+       [ac_c_compile_value=0])
+     CFLAGS="$save_CFLAGS"])
