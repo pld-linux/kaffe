@@ -35,3 +35,14 @@
 -@JIKESPROG@ -bootclasspath  @prefix@/jre/lib/rt.jar ${1+"$@"}
 +@JIKESPROG@ -bootclasspath  @jredir@/lib/rt.jar ${1+"$@"}
  exit $?
+--- kaffe-1.1.5/libraries/javalib/gnu/classpath/VMSystemProperties.java.orig	2005-04-10 15:31:20.000000000 +0000
++++ kaffe-1.1.5/libraries/javalib/gnu/classpath/VMSystemProperties.java	2005-04-10 15:31:31.000000000 +0000
+@@ -200,7 +200,7 @@
+       // Set base URL if not already set.
+       if (properties.get("gnu.classpath.home.url") == null)
+ 	properties.put("gnu.classpath.home.url",
+-		       "file://" + properties.get("gnu.classpath.home") + "/jre/lib");
++		       "file://" + properties.get("gnu.classpath.home") + "/lib");
+     }
+ 
+     /**
