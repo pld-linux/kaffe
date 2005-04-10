@@ -44,7 +44,6 @@ Requires:	fastjar
 Provides:	jre = 1.4
 Obsoletes:	kaffe-bissawt
 Conflicts:	ibm-java-sdk
-ExclusiveArch:	alpha arm %{ix86} m68k mips ppc sparc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_jredir	%{_libdir}/java
