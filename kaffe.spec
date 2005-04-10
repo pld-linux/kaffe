@@ -155,6 +155,7 @@ Bibliotecas e headers de desenvolvimento para o Kaffe.
 %build
 rm -f acinclude.m4
 cp -f /usr/share/automake/config.sub scripts
+cp -f /usr/share/automake/config.sub kaffe/kaffevm/boehm-gc/boehm
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
