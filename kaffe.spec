@@ -32,14 +32,15 @@ BuildRequires:	glib2-devel >= 2.2
 BuildRequires:	gmp-devel >= 3.1.1
 BuildRequires:	gtk+2-devel >= 2:2.4
 BuildRequires:	jikes >= 1.21
+%ifarch ppc
+BuildRequires:	libffi-devel
+%endif
 BuildRequires:	libltdl-devel
 BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	zip
-%ifarch ppc
-BuildRequires:	libffi-devel
-%endif
 Requires:	fastjar
 Provides:	jre = 1.4
 Obsoletes:	kaffe-bissawt
@@ -50,7 +51,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %ifarch %{ix86}
 %define		_archdir %{_jredir}/lib/i386
 %endif
-%ifarch amd64
+%ifarch %{x8664}
 %define		_archdir %{_jredir}/lib/x86_64
 %endif
 %ifarch alpha arm m68k mips sparc
