@@ -17,9 +17,8 @@ diff -Nur kaffe-1.1.5.orig/Makefile.am kaffe-1.1.5/Makefile.am
  	kaffe/kaffevm \
  	libraries/clib \
  	kaffe
-diff -Nur kaffe-1.1.5.orig/configure.ac kaffe-1.1.5/configure.ac
---- kaffe-1.1.5.orig/configure.ac	2005-04-05 17:49:39.000000000 +0000
-+++ kaffe-1.1.5/configure.ac	2005-04-08 18:20:33.000000000 +0000
+--- kaffe-1.1.6/configure.ac.orig	2005-09-20 02:04:17.000000000 +0200
++++ kaffe-1.1.6/configure.ac	2005-10-22 02:26:14.066869336 +0200
 @@ -294,7 +294,7 @@
  esac
  
@@ -29,12 +28,12 @@ diff -Nur kaffe-1.1.5.orig/configure.ac kaffe-1.1.5/configure.ac
  AC_LIBTOOL_WIN32_DLL
  AC_PROG_LIBTOOL
  AC_SUBST(LIBTOOL_DEPS)
-@@ -2234,7 +2234,6 @@
- AC_SUBST(CFLAGS_WITHOUT_PG)
- 
+@@ -2307,7 +2307,6 @@
+ CLASSPATH_INCLUDES="-I\$(top_srcdir)/libraries/clib/target/Linux -I\$(top_srcdir)/libraries/clib/target/generic"
+ AC_SUBST(CLASSPATH_INCLUDES)
  
 -AC_CONFIG_SUBDIRS([libltdl])
- AC_CONFIG_HEADERS([config/config.h include/kaffe/jni_md.h])
+ AC_CONFIG_HEADERS([config/config.h])
  AC_CONFIG_FILES([Makefile])
  AC_CONFIG_FILES([project.xml project.properties])
 diff -Nur kaffe-1.1.5.orig/kaffe/kaffe/Makefile.am kaffe-1.1.5/kaffe/kaffe/Makefile.am
