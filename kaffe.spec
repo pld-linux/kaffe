@@ -10,13 +10,13 @@ Summary(pt_BR):	MАquina virtual free para rodar cСdigo Java(tm)
 Summary(ru):	Свободно распространяемая виртуальная машина для запуска Java(tm) кода
 Summary(uk):	В╕льно розповсюджувана в╕ртуальна машина для запуску Java(tm) коду
 Name:		kaffe
-Version:	1.1.5
+Version:	1.1.6
 Release:	0.1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
 Source0:	http://www.kaffe.org/ftp/pub/kaffe/v1.1.x-development/%{name}-%{version}.tar.gz
-# Source0-md5:	928c578d4808012fe5ba5587071d2aa2
+# Source0-md5:	29d4b9ec58080715d13a764e9e4cfc06
 Patch0:		%{name}-alpha.patch
 Patch1:		%{name}-dyn_ltdl.patch
 Patch2:		%{name}-posix-sh.patch
@@ -216,6 +216,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/javadoc
 %attr(755,root,root) %{_bindir}/javah
 %attr(755,root,root) %{_bindir}/javap
+%attr(755,root,root) %{_bindir}/jdb
 %attr(755,root,root) %{_jredir}/bin/javac
-%{_jredir}/lib/tools.jar
+%{_prefix}/lib/tools.jar
 %{_includedir}/*
