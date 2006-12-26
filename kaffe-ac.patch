@@ -1,0 +1,19 @@
+--- kaffe-1.1.7/configure.ac.orig	2006-04-23 23:26:27.116105000 +0200
++++ kaffe-1.1.7/configure.ac	2006-12-25 18:07:55.938509349 +0100
+@@ -2449,7 +2449,7 @@
+ dnl -------------------------
+ 
+ dnl First we remove eventually CFLAGS from the configure call.
+-ac_configure_args=`echo "$ac_configure_args" | sed "s%'CFLAGS=.*'%%g"`
++ac_configure_args=$(echo "$ac_configure_args" | sed "s%'CFLAGS=[[^']]*'%%g")
+ dnl Then we add it again for config.status
+ ac_configure_args="$ac_configure_args 'CFLAGS=${CFLAGS}'"
+ ac_cv_env_CFLAGS_value="${CFLAGS}"
+@@ -2492,7 +2492,6 @@
+ AC_CONFIG_FILES([external/Makefile])
+ AC_CONFIG_FILES([external/gcc/Makefile])
+ AC_CONFIG_FILES([external/gcc/zlib/Makefile])
+-AC_CONFIG_FILES([external/gcc/fastjar/Makefile])
+ AC_CONFIG_FILES([include/Makefile])
+ AC_CONFIG_FILES([replace/Makefile])
+ AC_CONFIG_FILES([kaffe/Makefile])
