@@ -1,15 +1,14 @@
-diff -Nur kaffe-1.1.5.orig/Makefile.am kaffe-1.1.5/Makefile.am
---- kaffe-1.1.5.orig/Makefile.am	2005-04-08 18:16:09.000000000 +0000
-+++ kaffe-1.1.5/Makefile.am	2005-04-08 18:17:44.000000000 +0000
-@@ -25,7 +25,6 @@
- 	. \
+--- kaffe-1.1.7/Makefile.am.orig	2006-03-26 04:59:06.000000000 +0200
++++ kaffe-1.1.7/Makefile.am	2006-04-23 23:05:19.616891750 +0200
+@@ -20,7 +20,6 @@
+ 	external \
  	libraries/javalib \
  	config \
 -	libltdl \
- 	$(MAYBE_BINRELOC_DIR) \
  	kaffe/kaffeh \
  	include  \
-@@ -241,7 +240,6 @@
+ 	kaffe/kaffevm \
+@@ -211,7 +210,6 @@
  	config \
  	include \
  	replace \

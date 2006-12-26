@@ -16,33 +16,11 @@
  AC_SUBST(jredir)
  
  jrebindir=$jredir/bin
---- kaffe-1.1.5/kaffe/scripts/kaffe.in.orig	2005-04-09 12:29:29.000000000 +0000
-+++ kaffe-1.1.5/kaffe/scripts/kaffe.in	2005-04-09 12:29:36.000000000 +0000
-@@ -55,7 +55,7 @@
- fi
- 
- if test x"${KAFFEHOME+set}"x != x"set"x; then
--  KAFFEHOME="@prefix@"
-+  KAFFEHOME="@jredir@"
- fi
- export KAFFEHOME
- 
---- kaffe-1.1.5/kaffe/scripts/compat/javac.in.orig	2005-04-10 13:33:59.000000000 +0200
-+++ kaffe-1.1.5/kaffe/scripts/compat/javac.in	2005-04-10 13:34:11.000000000 +0200
+--- kaffe-1.1.7/kaffe/scripts/compat/javac.in.orig	2005-04-10 13:33:59.000000000 +0200
++++ kaffe-1.1.7/kaffe/scripts/compat/javac.in	2005-04-10 13:34:11.000000000 +0200
 @@ -1,4 +1,4 @@
  #! /bin/sh
  # We use the jikes compiler detected by configure
--@JIKESPROG@ -bootclasspath  @prefix@/jre/lib/rt.jar ${1+"$@"}
-+@JIKESPROG@ -bootclasspath  @jredir@/lib/rt.jar ${1+"$@"}
+-@JIKESPROG@ -bootclasspath  @prefix@/jre/lib/glibj.zip ${1+"$@"}
++@JIKESPROG@ -bootclasspath  @jredir@/lib/glibj.zip ${1+"$@"}
  exit $?
---- kaffe-1.1.5/libraries/javalib/gnu/classpath/VMSystemProperties.java.orig	2005-04-10 15:31:20.000000000 +0000
-+++ kaffe-1.1.5/libraries/javalib/gnu/classpath/VMSystemProperties.java	2005-04-10 15:31:31.000000000 +0000
-@@ -200,7 +200,7 @@
-       // Set base URL if not already set.
-       if (properties.get("gnu.classpath.home.url") == null)
- 	properties.put("gnu.classpath.home.url",
--		       "file://" + properties.get("gnu.classpath.home") + "/jre/lib");
-+		       "file://" + properties.get("gnu.classpath.home") + "/lib");
-     }
- 
-     /**
