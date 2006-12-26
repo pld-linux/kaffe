@@ -1,8 +1,3 @@
-#
-# TODO:
-# - cairo+pango
-# - can more files be moved %%{name} -> devel?
-
 Summary:	A free virtual machine for running Java(TM) code
 Summary(es):	MАquina virtual free para ejecutar cСdigo Java(tm)
 Summary(pl):	Darmowa maszyna wirtualna Javy
@@ -10,27 +5,30 @@ Summary(pt_BR):	MАquina virtual free para rodar cСdigo Java(tm)
 Summary(ru):	Свободно распространяемая виртуальная машина для запуска Java(tm) кода
 Summary(uk):	В╕льно розповсюджувана в╕ртуальна машина для запуску Java(tm) коду
 Name:		kaffe
-Version:	1.1.6
+Version:	1.1.7
 Release:	0.1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages/Java
-Source0:	http://www.kaffe.org/ftp/pub/kaffe/v1.1.x-development/%{name}-%{version}.tar.gz
-# Source0-md5:	29d4b9ec58080715d13a764e9e4cfc06
+Source0:	http://www.kaffe.org/ftp/pub/kaffe/v1.1.x-development/%{name}-%{version}.tar.bz2
+# Source0-md5:	6ba7a8ef815ddafcb1ec75f268f58897
 Patch0:		%{name}-alpha.patch
 Patch1:		%{name}-dyn_ltdl.patch
 Patch2:		%{name}-posix-sh.patch
 Patch3:		%{name}-jredir.patch
-Patch4:		%{name}-automake-1_9_4.patch
+Patch4:		%{name}-ac.patch
 URL:		http://www.kaffe.org/
 BuildRequires:	alsa-lib-devel >= 1.0.1
-BuildRequires:	autoconf
-BuildRequires:	automake >= 1:1.9.4
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake >= 1:1.9.5
+BuildRequires:	cairo-devel >= 0.5.0
+BuildRequires:	dssi
 BuildRequires:	esound-devel >= 0.2.1
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 2.2
 BuildRequires:	gmp-devel >= 3.1.1
 BuildRequires:	gtk+2-devel >= 2:2.4
+BuildRequires:	jack-audio-connection-kit-devel
 BuildRequires:	jikes >= 1.21
 %ifarch ppc
 BuildRequires:	libffi-devel
@@ -40,6 +38,7 @@ BuildRequires:	libtool
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.213
+BuildRequires:	sed >= 4.0
 BuildRequires:	zip
 Requires:	fastjar
 Provides:	jre = 1.4
@@ -117,33 +116,55 @@ JDK/JRE в╕д Javasoft); в другому - викону╓ комп╕ляц╕ю "just-in-time"
 з тою ж швидк╕стю, як ╕ стандартний скомп╕льований код, збер╕гаючи при
 цьому все переваги та гнучк╕сть машинно-незалежного п╕дходу.
 
+%package awt-gtk
+Summary:	GTK+ implementation of AWT
+Summary(pl):	Oparta na GTK+ implementacja AWT
+Group:		X11/Libraries
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description awt-gtk
+GTK+ implementation of AWT.
+
+%description awt-gtk -l pl
+Oparta na GTK+ implementacja AWT.
+
+%package midi-alsa
+Summary:	ALSA MIDI interface
+Summary(pl):	Interfejs MIDI ALSA
+Group:		Libraries
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description midi-alsa
+ALSA MIDI interface.
+
+%description midi-alsa -l pl
+Interfejs MIDI ALSA.
+
+%package midi-dssi
+Summary:	DSSI MIDI interface
+Summary(pl):	Interfejs MIDI DSSI
+Group:		Libraries
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description midi-dssi
+DSSI MIDI interface.
+
+%description midi-dssi -l pl
+Interfejs MIDI DSSI.
+
 %package devel
-Summary:	Headers and libtool files for kaffe
-Summary(pl):	Pliki nagЁСwkowe i skrypty libtoola dla kaffe
-Summary(pt_BR):	Bibliotecas e headers de desenvolvimento para o Kaffe
-Summary(ru):	Хедеры и библиотеки для kaffe
-Summary(uk):	Хедери та б╕бл╕отеки для kaffe
+Summary:	Headers and development tools for kaffe
+Summary(pl):	Pliki nagЁСwkowe i narzЙdzie programistyczne dla kaffe
 Group:		Development/Languages/Java
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	jikes >= 1.22-2
 Provides:	jdk = 1.4
 
 %description devel
-Headers and libtool files for kaffe.
+Headers and development tools for kaffe.
 
 %description devel -l pl
-Pliki nagЁСwkowe i skrypty libtoola dla kaffe.
-
-%description devel -l pt_BR
-Bibliotecas e headers de desenvolvimento para o Kaffe.
-
-%description devel -l ru
-Хедеры и библиотеки для разработок с использованием kaffe (включая
-компиляцию java-программ).
-
-%description devel -l uk
-Хедери та б╕бл╕отеки для розробок з використанням kaffe (включаючи
-комп╕ляц╕ю java-програм).
+Pliki nagЁСwkowe i narzЙdzie programistyczne dla kaffe.
 
 %prep
 %setup -q
@@ -153,29 +174,47 @@ Bibliotecas e headers de desenvolvimento para o Kaffe.
 %patch3 -p1
 %patch4 -p1
 
+# to get proper logging.properties path
+sed -i -e 's,@prefix@,%{_jredir},' libraries/javalib/external/classpath/gnu/classpath/Configuration.java.in
+
 %build
-rm -f acinclude.m4
-cp -f /usr/share/automake/config.sub scripts
 cp -f /usr/share/automake/config.sub kaffe/kaffevm/boehm-gc/boehm
+cd external/gcc/fastjar
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+cd ../../..
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-ltdl-install=no \
-	--with-jredir=%{_jredir}
+	--enable-gtk-cairo \
+	--with-jredir=%{_jredir} \
+	--with-system-zlib
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	loggingdir=%{_jredir}/lib \
+	securitydir=%{_jredir}/lib/security
 
 ln -s %{_bindir}/javac $RPM_BUILD_ROOT%{_jredir}/bin
 
-rm -rf developers/{CVS,glibc-2.1.1-signal.patch,rpm-kaffe.spec} FAQ/CVS
-rm -rf $RPM_BUILD_ROOT%{_bindir}/jar
+# not made if compiling glibj.zip
+ln -sf glibj.zip $RPM_BUILD_ROOT%{_jredir}/lib/rt.jar
+
+rm -rf developers/{CVS,autogen.sh,glibc-2.1.1-signal.patch,rpm-kaffe.spec} FAQ/CVS
+# use external
+rm -f $RPM_BUILD_ROOT{%{_bindir}/{fastjar,jar},%{_mandir}/man1/fastjar.1,%{_infodir}/fastjar.info}
+# tools.zip only - already as %{_prefix}/lib/tools.jar
+rm -rf $RPM_BUILD_ROOT%{_datadir}/classpath
 
 %find_lang %{name}
 
@@ -187,36 +226,63 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc FAQ/* ChangeLog* README WHATSNEW
-%dir %{_jredir}
-%dir %{_jredir}/bin
-%attr(755,root,root) %{_jredir}/bin/java
-%attr(755,root,root) %{_jredir}/bin/kaffe*
-%attr(755,root,root) %{_jredir}/bin/rmiregistry
-%dir %{_jredir}/lib
-%{_jredir}/lib/gmpjavamath.jar
-%{_jredir}/lib/rt.jar
-%{_jredir}/lib/*.properties
-%{_jredir}/lib/security
-%attr(755,root,root) %{_archdir}
+%doc AUTHORS ChangeLog* README RELEASE-NOTES THIRDPARTY TODO WHATSNEW FAQ/*
 %attr(755,root,root) %{_bindir}/appletviewer
 %attr(755,root,root) %{_bindir}/install-jar
 %attr(755,root,root) %{_bindir}/java
-%attr(755,root,root) %{_bindir}/kaffe*
+%attr(755,root,root) %{_bindir}/kaffe
+%attr(755,root,root) %{_bindir}/kaffeh
 %attr(755,root,root) %{_bindir}/native2ascii
-%attr(755,root,root) %{_bindir}/rmi*
-%attr(755,root,root) %{_bindir}/serialver
-%{_libdir}/awt
+%attr(755,root,root) %{_bindir}/rmiregistry
+%dir %{_jredir}
+%dir %{_jredir}/bin
+%attr(755,root,root) %{_jredir}/bin/java
+%attr(755,root,root) %{_jredir}/bin/kaffe
+%attr(755,root,root) %{_jredir}/bin/kaffe-bin
+%attr(755,root,root) %{_jredir}/bin/rmiregistry
+%dir %{_jredir}/lib
+%{_jredir}/lib/glibj.zip
+%{_jredir}/lib/gmpjavamath.jar
+%{_jredir}/lib/logging.properties
+%{_jredir}/lib/rt.jar
+%{_jredir}/lib/security
+%dir %{_archdir}
+%attr(755,root,root) %{_archdir}/*.so*
+# used by lt_dlopen
+%{_archdir}/*.la
+%exclude %{_archdir}/libgtkpeer.*
+%exclude %{_archdir}/libjawtgnu.*
+%exclude %{_archdir}/libgjsmalsa.*
+%exclude %{_archdir}/libgjsmdssi.*
 %{_mandir}/man1/kaffe.1*
+
+%files awt-gtk
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_archdir}/libgtkpeer.so*
+%attr(755,root,root) %{_archdir}/libjawtgnu.so*
+%{_archdir}/libgtkpeer.la
+%{_archdir}/libjawtgnu.la
+
+%files midi-alsa
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_archdir}/libgjsmalsa.so*
+%{_archdir}/libgjsmalsa.la
+
+%files midi-dssi
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_archdir}/libgjsmdssi.so*
+%{_archdir}/libgjsmdssi.la
 
 %files devel
 %defattr(644,root,root,755)
 %doc developers/*
 %attr(755,root,root) %{_bindir}/javac
-%attr(755,root,root) %{_bindir}/javadoc
 %attr(755,root,root) %{_bindir}/javah
 %attr(755,root,root) %{_bindir}/javap
 %attr(755,root,root) %{_bindir}/jdb
+%attr(755,root,root) %{_bindir}/rmic
+%attr(755,root,root) %{_bindir}/serialver
 %attr(755,root,root) %{_jredir}/bin/javac
 %{_prefix}/lib/tools.jar
-%{_includedir}/*
+%{_includedir}/*.h
+%{_includedir}/kaffe
