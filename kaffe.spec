@@ -1,9 +1,9 @@
 Summary:	A free virtual machine for running Java(TM) code
-Summary(es):	Máquina virtual free para ejecutar código Java(tm)
-Summary(pl):	Darmowa maszyna wirtualna Javy
-Summary(pt_BR):	Máquina virtual free para rodar código Java(tm)
-Summary(ru):	ó×ÏÂÏÄÎÏ ÒÁÓÐÒÏÓÔÒÁÎÑÅÍÁÑ ×ÉÒÔÕÁÌØÎÁÑ ÍÁÛÉÎÁ ÄÌÑ ÚÁÐÕÓËÁ Java(tm) ËÏÄÁ
-Summary(uk):	÷¦ÌØÎÏ ÒÏÚÐÏ×ÓÀÄÖÕ×ÁÎÁ ×¦ÒÔÕÁÌØÎÁ ÍÁÛÉÎÁ ÄÌÑ ÚÁÐÕÓËÕ Java(tm) ËÏÄÕ
+Summary(es.UTF-8):   MÃ¡quina virtual free para ejecutar cÃ³digo Java(tm)
+Summary(pl.UTF-8):   Darmowa maszyna wirtualna Javy
+Summary(pt_BR.UTF-8):   MÃ¡quina virtual free para rodar cÃ³digo Java(tm)
+Summary(ru.UTF-8):   Ð¡Ð²Ð¾Ð±Ð¾Ð´Ð½Ð¾ Ñ€Ð°ÑÐ¿Ñ€Ð¾ÑÑ‚Ñ€Ð°Ð½ÑÐµÐ¼Ð°Ñ Ð²Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ð°Ñ Ð¼Ð°ÑˆÐ¸Ð½Ð° Ð´Ð»Ñ Ð·Ð°Ð¿ÑƒÑÐºÐ° Java(tm) ÐºÐ¾Ð´Ð°
+Summary(uk.UTF-8):   Ð’Ñ–Ð»ÑŒÐ½Ð¾ Ñ€Ð¾Ð·Ð¿Ð¾Ð²ÑÑŽÐ´Ð¶ÑƒÐ²Ð°Ð½Ð° Ð²Ñ–Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ð° Ð¼Ð°ÑˆÐ¸Ð½Ð° Ð´Ð»Ñ Ð·Ð°Ð¿ÑƒÑÐºÑƒ Java(tm) ÐºÐ¾Ð´Ñƒ
 Name:		kaffe
 Version:	1.1.7
 Release:	0.1
@@ -70,91 +70,91 @@ ultimately allow execution of Java code at the same speed as standard
 compiled code, while also maintaining the advantages and flexibility
 of code independence.
 
-%description -l es
-Kaffe es una máquina virtual proyectada para ejecutar bytecode Java.
-Esta máquina puede ser configurada en dos modos. En uno, opera como un
-interpretador puro de bytecode (como la máquina de la JavaSoft); en el
-segundo modo, ejecuta conversión de código "just-in-time" del código
-abstracto para el código nativo de máquina. Esto permite la ejecución
-de código Java en la misma velocidad que el código compilado, con las
-ventajas de la flexibilidad y independencia de código.
+%description -l es.UTF-8
+Kaffe es una mÃ¡quina virtual proyectada para ejecutar bytecode Java.
+Esta mÃ¡quina puede ser configurada en dos modos. En uno, opera como un
+interpretador puro de bytecode (como la mÃ¡quina de la JavaSoft); en el
+segundo modo, ejecuta conversiÃ³n de cÃ³digo "just-in-time" del cÃ³digo
+abstracto para el cÃ³digo nativo de mÃ¡quina. Esto permite la ejecuciÃ³n
+de cÃ³digo Java en la misma velocidad que el cÃ³digo compilado, con las
+ventajas de la flexibilidad y independencia de cÃ³digo.
 
-%description -l pl
-Kaffe jest darmow± maszyn± wirtualn± do uruchamiania bytecodu Javy.
-Mo¿e byæ u¿ywana w dwóch trybach: w pierwszym jako czysty interpreter
-bytecodu, w drugim przeprowadza "w locie" konwersjê bytecodu na kod
-natywny maszyny. Drugi tryb pozwala uruchamiaæ kod Javy tak szybko jak
-kod skompilowany, pozostawiaj±c niezale¿no¶æ kodu od platformy.
+%description -l pl.UTF-8
+Kaffe jest darmowÄ… maszynÄ… wirtualnÄ… do uruchamiania bytecodu Javy.
+MoÅ¼e byÄ‡ uÅ¼ywana w dwÃ³ch trybach: w pierwszym jako czysty interpreter
+bytecodu, w drugim przeprowadza "w locie" konwersjÄ™ bytecodu na kod
+natywny maszyny. Drugi tryb pozwala uruchamiaÄ‡ kod Javy tak szybko jak
+kod skompilowany, pozostawiajÄ…c niezaleÅ¼noÅ›Ä‡ kodu od platformy.
 
-%description -l pt_BR
-Kaffe é uma máquina virtual projetada para executar bytecode Java.
-Esta máquina pode ser configurada em dois modos. Em um modo ela opera
-como um interpretador puro de bytecode (como a máquina da JavaSoft);
-no segundo modo ela executa conversão de código "just-in-time" do
-código abstrato para o código nativo de máquina. Isto permite a
-execução de código Java na mesma velocidade que o código compilado,
-com as vantagens da flexibilidade e independência de código.
+%description -l pt_BR.UTF-8
+Kaffe Ã© uma mÃ¡quina virtual projetada para executar bytecode Java.
+Esta mÃ¡quina pode ser configurada em dois modos. Em um modo ela opera
+como um interpretador puro de bytecode (como a mÃ¡quina da JavaSoft);
+no segundo modo ela executa conversÃ£o de cÃ³digo "just-in-time" do
+cÃ³digo abstrato para o cÃ³digo nativo de mÃ¡quina. Isto permite a
+execuÃ§Ã£o de cÃ³digo Java na mesma velocidade que o cÃ³digo compilado,
+com as vantagens da flexibilidade e independÃªncia de cÃ³digo.
 
-%description -l ru
-üÔÏ -- Kaffe, ×ÉÒÔÕÁÌØÎÁÑ ÍÁÛÉÎÁ ÒÁÚÒÁÂÏÔÁÎÎÁÑ ÄÌÑ ×ÙÐÏÌÎÅÎÉÑ ÂÁÊÔËÏÄÁ
-Java. üÔÁ ÍÁÛÉÎÁ ÍÏÖÅÔ ÂÙÔØ ÉÓÐÏÌØÚÏ×ÁÎÁ × Ä×ÕÈ ÒÅÖÉÍÁÈ. ÷ ÐÅÒ×ÏÍ ÏÎÁ
-ÒÁÂÏÔÁÅÔ ËÁË "ÞÉÓÔÙÊ" ÉÎÔÅÐÒÅÔÁÔÏÒ ÂÁÊÔËÏÄÁ (ÐÏÄÏÂÎÏ ÍÁÛÉÎÅ ÉÚ JDK/JRE
-ÏÔ Javasoft'Á); ×Ï ×ÔÏÒÏÍ ÒÅÖÉÍÅ ÏÎÁ ×ÙÐÏÌÎÑÅÔ ËÏÍÐÉÌÑÃÉÀ ÔÉÐÁ
-"just-in-time" (ÔÏ ÅÓÔØ ÐÒÅÏÂÒÁÚÕÅÔ ÉÚ ÁÂÓÔÒÁËÔÎÏÇÏ ÂÁÊÔ-ËÏÄÁ ×
-ÍÁÛÉÎÎÙÊ ËÏÄ ÐÅÒÅÄ ÉÓÐÏÌÎÅÎÉÅÍ). üÔÏ × ÐÒÅÄÅÌÅ ÍÏÖÅÔ ÐÏÚ×ÏÌÉÔØ
-ÐÒÏÇÒÁÍÍÁÍ, ÎÁÐÉÓÁÎÎÙÍ ÎÁ Java, ÉÓÐÏÌÎÑÔØÓÑ Ó ÔÏÊ ÖÅ ÓËÏÒÏÓÔØÀ ËÁË É
-ÓÔÁÎÄÁÒÔÎÙÊ ÏÔËÏÍÐÉÌÉÒÏ×ÁÎÎÙÊ ËÏÄ ÓÏÈÒÁÎÉ× ÐÒÉ ÜÔÏÍ ×ÓÅ ÐÒÅÍÕÝÅÓÔ×Á É
-ÇÉÂËÏÓÔØ ÍÁÛÉÎÎÏ-ÎÅÚÁ×ÉÓÉÍÏÇÏ ÐÏÄÈÏÄÁ.
+%description -l ru.UTF-8
+Ð­Ñ‚Ð¾ -- Kaffe, Ð²Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ð°Ñ Ð¼Ð°ÑˆÐ¸Ð½Ð° Ñ€Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ð½Ð½Ð°Ñ Ð´Ð»Ñ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ Ð±Ð°Ð¹Ñ‚ÐºÐ¾Ð´Ð°
+Java. Ð­Ñ‚Ð° Ð¼Ð°ÑˆÐ¸Ð½Ð° Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð° Ð² Ð´Ð²ÑƒÑ… Ñ€ÐµÐ¶Ð¸Ð¼Ð°Ñ…. Ð’ Ð¿ÐµÑ€Ð²Ð¾Ð¼ Ð¾Ð½Ð°
+Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ ÐºÐ°Ðº "Ñ‡Ð¸ÑÑ‚Ñ‹Ð¹" Ð¸Ð½Ñ‚ÐµÐ¿Ñ€ÐµÑ‚Ð°Ñ‚Ð¾Ñ€ Ð±Ð°Ð¹Ñ‚ÐºÐ¾Ð´Ð° (Ð¿Ð¾Ð´Ð¾Ð±Ð½Ð¾ Ð¼Ð°ÑˆÐ¸Ð½Ðµ Ð¸Ð· JDK/JRE
+Ð¾Ñ‚ Javasoft'Ð°); Ð²Ð¾ Ð²Ñ‚Ð¾Ñ€Ð¾Ð¼ Ñ€ÐµÐ¶Ð¸Ð¼Ðµ Ð¾Ð½Ð° Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÑÐµÑ‚ ÐºÐ¾Ð¼Ð¿Ð¸Ð»ÑÑ†Ð¸ÑŽ Ñ‚Ð¸Ð¿Ð°
+"just-in-time" (Ñ‚Ð¾ ÐµÑÑ‚ÑŒ Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·ÑƒÐµÑ‚ Ð¸Ð· Ð°Ð±ÑÑ‚Ñ€Ð°ÐºÑ‚Ð½Ð¾Ð³Ð¾ Ð±Ð°Ð¹Ñ‚-ÐºÐ¾Ð´Ð° Ð²
+Ð¼Ð°ÑˆÐ¸Ð½Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ Ð¿ÐµÑ€ÐµÐ´ Ð¸ÑÐ¿Ð¾Ð»Ð½ÐµÐ½Ð¸ÐµÐ¼). Ð­Ñ‚Ð¾ Ð² Ð¿Ñ€ÐµÐ´ÐµÐ»Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ð¾Ð·Ð²Ð¾Ð»Ð¸Ñ‚ÑŒ
+Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð°Ð¼, Ð½Ð°Ð¿Ð¸ÑÐ°Ð½Ð½Ñ‹Ð¼ Ð½Ð° Java, Ð¸ÑÐ¿Ð¾Ð»Ð½ÑÑ‚ÑŒÑÑ Ñ Ñ‚Ð¾Ð¹ Ð¶Ðµ ÑÐºÐ¾Ñ€Ð¾ÑÑ‚ÑŒÑŽ ÐºÐ°Ðº Ð¸
+ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð½Ñ‹Ð¹ Ð¾Ñ‚ÐºÐ¾Ð¼Ð¿Ð¸Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÐºÐ¾Ð´ ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ð² Ð¿Ñ€Ð¸ ÑÑ‚Ð¾Ð¼ Ð²ÑÐµ Ð¿Ñ€ÐµÐ¼ÑƒÑ‰ÐµÑÑ‚Ð²Ð° Ð¸
+Ð³Ð¸Ð±ÐºÐ¾ÑÑ‚ÑŒ Ð¼Ð°ÑˆÐ¸Ð½Ð½Ð¾-Ð½ÐµÐ·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾Ð³Ð¾ Ð¿Ð¾Ð´Ñ…Ð¾Ð´Ð°.
 
-%description -l uk
-ãÅ -- Kaffe, ×¦ÒÔÕÁÌØÎÁ ÍÁÛÉÎÁ, ÒÏÚÒÏÂÌÅÎÁ ÄÌÑ ×ÉËÏÎÁÎÎÑ ÂÁÊÔËÏÄÕ
-Java. ãÑ ÍÁÛÉÎÁ ÍÏÖÅ ÂÕÔÉ ×ÉËÏÒÉÓÔÁÎÁ × Ä×ÏÈ ÒÅÖÉÍÁÈ. ÷ ÐÅÒÛÏÍÕ ×ÏÎÁ
-ÐÒÁÃÀ¤ ÑË "ÞÉÓÔÉÊ" ¦ÎÔÅÒÐÒÅÔÁÔÏÒ ÂÁÊÔËÏÄÕ (ÔÁË ÓÁÍÏ, ÑË ÍÁÛÉÎÁ Ú
-JDK/JRE ×¦Ä Javasoft); × ÄÒÕÇÏÍÕ - ×ÉËÏÎÕ¤ ËÏÍÐ¦ÌÑÃ¦À "just-in-time"
-(ÐÅÒÅÔ×ÏÒÀ¤ Ú ÁÂÓÔÒÁËÔÎÏÇÏ ÂÁÊÔ-ËÏÄÕ × ÍÁÛÉÎÎÉÊ ËÏÄ ÐÅÒÅÄ ×ÉËÏÎÁÎÎÑÍ).
-ãÅ × ¦ÄÅÁÌ¦ ÍÏÖÅ ÄÏÚ×ÏÌÉÔÉ ÐÒÏÇÒÁÍÁÍ, ÎÁÐÉÓÁÎÉÍ ÎÁ Java, ×ÉËÏÎÕ×ÁÔÉÓÑ
-Ú ÔÏÀ Ö Û×ÉÄË¦ÓÔÀ, ÑË ¦ ÓÔÁÎÄÁÒÔÎÉÊ ÓËÏÍÐ¦ÌØÏ×ÁÎÉÊ ËÏÄ, ÚÂÅÒ¦ÇÁÀÞÉ ÐÒÉ
-ÃØÏÍÕ ×ÓÅ ÐÅÒÅ×ÁÇÉ ÔÁ ÇÎÕÞË¦ÓÔØ ÍÁÛÉÎÎÏ-ÎÅÚÁÌÅÖÎÏÇÏ Ð¦ÄÈÏÄÕ.
+%description -l uk.UTF-8
+Ð¦Ðµ -- Kaffe, Ð²Ñ–Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ð° Ð¼Ð°ÑˆÐ¸Ð½Ð°, Ñ€Ð¾Ð·Ñ€Ð¾Ð±Ð»ÐµÐ½Ð° Ð´Ð»Ñ Ð²Ð¸ÐºÐ¾Ð½Ð°Ð½Ð½Ñ Ð±Ð°Ð¹Ñ‚ÐºÐ¾Ð´Ñƒ
+Java. Ð¦Ñ Ð¼Ð°ÑˆÐ¸Ð½Ð° Ð¼Ð¾Ð¶Ðµ Ð±ÑƒÑ‚Ð¸ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð° Ð² Ð´Ð²Ð¾Ñ… Ñ€ÐµÐ¶Ð¸Ð¼Ð°Ñ…. Ð’ Ð¿ÐµÑ€ÑˆÐ¾Ð¼Ñƒ Ð²Ð¾Ð½Ð°
+Ð¿Ñ€Ð°Ñ†ÑŽÑ” ÑÐº "Ñ‡Ð¸ÑÑ‚Ð¸Ð¹" Ñ–Ð½Ñ‚ÐµÑ€Ð¿Ñ€ÐµÑ‚Ð°Ñ‚Ð¾Ñ€ Ð±Ð°Ð¹Ñ‚ÐºÐ¾Ð´Ñƒ (Ñ‚Ð°Ðº ÑÐ°Ð¼Ð¾, ÑÐº Ð¼Ð°ÑˆÐ¸Ð½Ð° Ð·
+JDK/JRE Ð²Ñ–Ð´ Javasoft); Ð² Ð´Ñ€ÑƒÐ³Ð¾Ð¼Ñƒ - Ð²Ð¸ÐºÐ¾Ð½ÑƒÑ” ÐºÐ¾Ð¼Ð¿Ñ–Ð»ÑÑ†Ñ–ÑŽ "just-in-time"
+(Ð¿ÐµÑ€ÐµÑ‚Ð²Ð¾Ñ€ÑŽÑ” Ð· Ð°Ð±ÑÑ‚Ñ€Ð°ÐºÑ‚Ð½Ð¾Ð³Ð¾ Ð±Ð°Ð¹Ñ‚-ÐºÐ¾Ð´Ñƒ Ð² Ð¼Ð°ÑˆÐ¸Ð½Ð½Ð¸Ð¹ ÐºÐ¾Ð´ Ð¿ÐµÑ€ÐµÐ´ Ð²Ð¸ÐºÐ¾Ð½Ð°Ð½Ð½ÑÐ¼).
+Ð¦Ðµ Ð² Ñ–Ð´ÐµÐ°Ð»Ñ– Ð¼Ð¾Ð¶Ðµ Ð´Ð¾Ð·Ð²Ð¾Ð»Ð¸Ñ‚Ð¸ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð°Ð¼, Ð½Ð°Ð¿Ð¸ÑÐ°Ð½Ð¸Ð¼ Ð½Ð° Java, Ð²Ð¸ÐºÐ¾Ð½ÑƒÐ²Ð°Ñ‚Ð¸ÑÑ
+Ð· Ñ‚Ð¾ÑŽ Ð¶ ÑˆÐ²Ð¸Ð´ÐºÑ–ÑÑ‚ÑŽ, ÑÐº Ñ– ÑÑ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð½Ð¸Ð¹ ÑÐºÐ¾Ð¼Ð¿Ñ–Ð»ÑŒÐ¾Ð²Ð°Ð½Ð¸Ð¹ ÐºÐ¾Ð´, Ð·Ð±ÐµÑ€Ñ–Ð³Ð°ÑŽÑ‡Ð¸ Ð¿Ñ€Ð¸
+Ñ†ÑŒÐ¾Ð¼Ñƒ Ð²ÑÐµ Ð¿ÐµÑ€ÐµÐ²Ð°Ð³Ð¸ Ñ‚Ð° Ð³Ð½ÑƒÑ‡ÐºÑ–ÑÑ‚ÑŒ Ð¼Ð°ÑˆÐ¸Ð½Ð½Ð¾-Ð½ÐµÐ·Ð°Ð»ÐµÐ¶Ð½Ð¾Ð³Ð¾ Ð¿Ñ–Ð´Ñ…Ð¾Ð´Ñƒ.
 
 %package awt-gtk
 Summary:	GTK+ implementation of AWT
-Summary(pl):	Oparta na GTK+ implementacja AWT
+Summary(pl.UTF-8):   Oparta na GTK+ implementacja AWT
 Group:		X11/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description awt-gtk
 GTK+ implementation of AWT.
 
-%description awt-gtk -l pl
+%description awt-gtk -l pl.UTF-8
 Oparta na GTK+ implementacja AWT.
 
 %package midi-alsa
 Summary:	ALSA MIDI interface
-Summary(pl):	Interfejs MIDI ALSA
+Summary(pl.UTF-8):   Interfejs MIDI ALSA
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description midi-alsa
 ALSA MIDI interface.
 
-%description midi-alsa -l pl
+%description midi-alsa -l pl.UTF-8
 Interfejs MIDI ALSA.
 
 %package midi-dssi
 Summary:	DSSI MIDI interface
-Summary(pl):	Interfejs MIDI DSSI
+Summary(pl.UTF-8):   Interfejs MIDI DSSI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description midi-dssi
 DSSI MIDI interface.
 
-%description midi-dssi -l pl
+%description midi-dssi -l pl.UTF-8
 Interfejs MIDI DSSI.
 
 %package devel
 Summary:	Headers and development tools for kaffe
-Summary(pl):	Pliki nag³ówkowe i narzêdzie programistyczne dla kaffe
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe i narzÄ™dzie programistyczne dla kaffe
 Group:		Development/Languages/Java
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	jikes >= 1.22-2
@@ -163,8 +163,8 @@ Provides:	jdk = 1.4
 %description devel
 Headers and development tools for kaffe.
 
-%description devel -l pl
-Pliki nag³ówkowe i narzêdzie programistyczne dla kaffe.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe i narzÄ™dzie programistyczne dla kaffe.
 
 %prep
 %setup -q
