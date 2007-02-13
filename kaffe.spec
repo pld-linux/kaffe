@@ -1,9 +1,9 @@
 Summary:	A free virtual machine for running Java(TM) code
-Summary(es.UTF-8):   Máquina virtual free para ejecutar código Java(tm)
-Summary(pl.UTF-8):   Darmowa maszyna wirtualna Javy
-Summary(pt_BR.UTF-8):   Máquina virtual free para rodar código Java(tm)
-Summary(ru.UTF-8):   Свободно распространяемая виртуальная машина для запуска Java(tm) кода
-Summary(uk.UTF-8):   Вільно розповсюджувана віртуальна машина для запуску Java(tm) коду
+Summary(es.UTF-8):	Máquina virtual free para ejecutar código Java(tm)
+Summary(pl.UTF-8):	Darmowa maszyna wirtualna Javy
+Summary(pt_BR.UTF-8):	Máquina virtual free para rodar código Java(tm)
+Summary(ru.UTF-8):	Свободно распространяемая виртуальная машина для запуска Java(tm) кода
+Summary(uk.UTF-8):	Вільно розповсюджувана віртуальна машина для запуску Java(tm) коду
 Name:		kaffe
 Version:	1.1.7
 Release:	0.1
@@ -118,7 +118,7 @@ JDK/JRE від Javasoft); в другому - виконує компіляці�
 
 %package awt-gtk
 Summary:	GTK+ implementation of AWT
-Summary(pl.UTF-8):   Oparta na GTK+ implementacja AWT
+Summary(pl.UTF-8):	Oparta na GTK+ implementacja AWT
 Group:		X11/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -130,7 +130,7 @@ Oparta na GTK+ implementacja AWT.
 
 %package midi-alsa
 Summary:	ALSA MIDI interface
-Summary(pl.UTF-8):   Interfejs MIDI ALSA
+Summary(pl.UTF-8):	Interfejs MIDI ALSA
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -142,7 +142,7 @@ Interfejs MIDI ALSA.
 
 %package midi-dssi
 Summary:	DSSI MIDI interface
-Summary(pl.UTF-8):   Interfejs MIDI DSSI
+Summary(pl.UTF-8):	Interfejs MIDI DSSI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -154,7 +154,7 @@ Interfejs MIDI DSSI.
 
 %package devel
 Summary:	Headers and development tools for kaffe
-Summary(pl.UTF-8):   Pliki nagłówkowe i narzędzie programistyczne dla kaffe
+Summary(pl.UTF-8):	Pliki nagłówkowe i narzędzie programistyczne dla kaffe
 Group:		Development/Languages/Java
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	jikes >= 1.22-2
