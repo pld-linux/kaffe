@@ -1,0 +1,6 @@
+- LDFLAGS="-s" in ./configure environment in %build instead stripping
+  binaries in %install,
+- updated Source URL,
+- cut %%changelog,
+- more fixes in perlpath,
+- osmetics.
