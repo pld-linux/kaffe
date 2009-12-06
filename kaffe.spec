@@ -22,7 +22,7 @@ BuildRequires:	alsa-lib-devel >= 1.0.1
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9.5
 BuildRequires:	cairo-devel >= 0.5.0
-BuildRequires:	dssi
+BuildRequires:	dssi-devel
 BuildRequires:	esound-devel >= 0.2.1
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 2.2
