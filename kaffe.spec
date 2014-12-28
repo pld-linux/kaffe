@@ -24,7 +24,7 @@ BuildRequires:	automake >= 1:1.9.5
 BuildRequires:	cairo-devel >= 0.5.0
 BuildRequires:	dssi-devel
 BuildRequires:	esound-devel >= 0.2.1
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 2.2
 BuildRequires:	gmp-devel >= 3.1.1
 BuildRequires:	gtk+2-devel >= 2:2.4
